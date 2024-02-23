@@ -1,8 +1,9 @@
 import express from "express";
-import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 import { wordRoutes } from "./routes/wordRoutes.js";
+import { userRoutes } from "./routes/userRoutes.js";
 
 const app = express();
 dotenv.config();
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/api/words", wordRoutes);
+app.use("/api/users", userRoutes);
 
 mongoose
   .connect(MONGODBURL)
