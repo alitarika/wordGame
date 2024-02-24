@@ -112,12 +112,13 @@ export const updateWord = async (req, res) => {
     });
   }
 
-  // Update word and send updated word and success message
+  // Update word, fetch updated word and send updated word and success message
   try {
     await word.updateOne({ original, translation });
+    const updatedWord = await Word.findById(id);
     return res.status(200).json({
-      success: `You successfully modified your word-translation pair as ${original}/${translation}`,
-      word,
+      success: `You successfully modified your word-translation pair as ${original} / ${translation}`,
+      updatedWord,
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -158,11 +159,9 @@ export const deleteWord = async (req, res) => {
   try {
     const { original, translation } = word;
     await word.deleteOne();
-    return res
-      .status(200)
-      .json({
-        success: `Word-translation pair of ${original}/${translation} is successfully deleted.`,
-      });
+    return res.status(200).json({
+      success: `Word-translation pair of ${original}/${translation} is successfully deleted.`,
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
