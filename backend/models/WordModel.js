@@ -16,8 +16,12 @@ const WordSchema = new Schema(
       type: String,
       required: true,
     },
+    // When user guessed the word last time
+    // user was mistaken(guessed wrong).
     mistaken: {
       type: Boolean,
+      default: false, // mistaken should only be true when it is explicitly said to be true
+      required: true,
     },
   },
   { timestamps: true }
