@@ -1,9 +1,30 @@
 import express from "express";
+import auth from "../middlewares/auth.js";
+import {
+  createWord,
+  getUserWords,
+  getUserMistakenWords,
+  updateWord,
+  deleteWord,
+} from "../controllers/wordControllers.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.status(200).json({ message: "Hi from word" });
-});
+router.use(auth);
+
+// Create new (original)word-translation pair.
+router.post("/", createWord);
+
+// Get user's all words in chronological order
+router.get("/", getUserWords);
+
+// Get user's mistaken (guessed wrong last time) words
+router.get("/mistaken", getUserMistakenWords);
+
+// Modify/update a (original)word-translation pair
+router.put("/:id", updateWord);
+
+// Delete a (original)word-translation pair
+router.delete("/:id", deleteWord);
 
 export { router as wordRoutes };
