@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./pages/Layout";
+import Home from "./pages/words/Home";
 
 export default function App() {
   return (
-    <>
-      <Layout />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
