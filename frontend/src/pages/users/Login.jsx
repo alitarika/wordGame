@@ -43,7 +43,8 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <section className="form-card">
+      <h1>qweQWEQDAS</h1>
       <form onSubmit={handleLogin}>
         <input
           type="text"
@@ -71,7 +72,7 @@ const Login = () => {
       </form>
       {/* Display error message if error state is not empty */}
       {error && <p>{error}</p>}
-    </div>
+    </section>
   );
 };
 

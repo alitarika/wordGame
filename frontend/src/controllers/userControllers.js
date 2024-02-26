@@ -54,3 +54,9 @@ export const registerUser = async (username, password, passwordConfirm) => {
 
   return data;
 };
+
+// Log out user
+export const logoutUser = () => {
+  localStorage.removeItem("username");
+  localStorage.removeItem("token");
+};

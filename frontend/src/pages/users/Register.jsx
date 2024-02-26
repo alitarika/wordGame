@@ -46,7 +46,8 @@ const Register = () => {
     }
   };
   return (
-    <div>
+    <section className="form-card">
+      <h1>QEQWEASDA</h1>
       <form onSubmit={handleRegister}>
         <input
           type="text"
@@ -84,7 +85,7 @@ const Register = () => {
       </form>
       {/* Display error message if error state is not empty */}
       {error && <p>{error}</p>}
-    </div>
+    </section>
   );
 };
 
