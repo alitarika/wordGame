@@ -4,34 +4,44 @@ import { loginUser } from "../../controllers/userControllers.js";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  // Set html title on the first render of page/ on mount
+  // Set document title on the first render of page/ on mount as 'Log In'
   useEffect(() => {
     document.title = "Log In";
   }, []);
 
+  // To access navigation functions init useNavigation hook
   const navigate = useNavigate();
 
+  // Parse setUser setter from user context
   const { setUser } = useContext(UserContext);
 
+  // Form Data state
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
 
+  // Error state to store error message if any
   const [error, setError] = useState("");
 
+  // Handle Function for login form submission
   const handleLogin = async (e) => {
+    // Prevent default behaviour of form submission
     e.preventDefault();
 
     try {
+      // Api call to /api/users/login
       await loginUser(formData.username, formData.password);
+      // Set user state of user context as the users username
       setUser(formData.username);
+      // Navigate to homepage on successful login
       navigate("/");
     } catch (error) {
-      setError(error.message);
-      console.log(error);
+      setError(error.message); // set error state as state message string
+      console.log(error); // Log the error
     }
   };
+
   return (
     <div>
       <form onSubmit={handleLogin}>
@@ -59,6 +69,7 @@ const Login = () => {
         />
         <button>Login</button>
       </form>
+      {/* Display error message if error state is not empty */}
       {error && <p>{error}</p>}
     </div>
   );
