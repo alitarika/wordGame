@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../contexts/UserContext";
+import { UserContext } from "../../contexts/UserContext.jsx";
 import { registerUser } from "../../controllers/userControllers.js";
 
 const Register = () => {
@@ -8,15 +8,27 @@ const Register = () => {
     document.title = "Register";
   }, []);
 
+  const { setUser } = useContext(UserContext);
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
     passwordConfirm: "",
   });
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    try {
+      await registerUser(
+        formData.username,
+        formData.password,
+        formData.passwordConfirm
+      );
+      setUser(formData.username);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div>

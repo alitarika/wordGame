@@ -1,4 +1,4 @@
-const BaseURL = "";
+const BaseURL = "http://localhost:3001";
 // Login user
 export const loginUser = async (username, password) => {
   if (!username || !password) {
@@ -35,7 +35,7 @@ export const registerUser = async (username, password, passwordConfirm) => {
     throw Error("Passwords do not match");
   }
 
-  const res = await fetch(`${BaseURL}/api/users`, {
+  const res = await fetch(`${BaseURL}/api/users/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
