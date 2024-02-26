@@ -1,12 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/UserContext.jsx";
 import { registerUser } from "../../controllers/userControllers.js";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   // Set html title on the first render of page/ on mount
   useEffect(() => {
     document.title = "Register";
   }, []);
+
+  const navigate = useNavigate();
 
   const { setUser } = useContext(UserContext);
 
@@ -15,6 +18,8 @@ const Register = () => {
     password: "",
     passwordConfirm: "",
   });
+
+  const [error, setError] = useState("");
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -26,7 +31,9 @@ const Register = () => {
         formData.passwordConfirm
       );
       setUser(formData.username);
+      navigate("/");
     } catch (error) {
+      setError(error.message);
       console.log(error);
     }
   };
@@ -67,6 +74,7 @@ const Register = () => {
         />
         <button>Register</button>
       </form>
+      {error && <p>{error}</p>}
     </div>
   );
 };
