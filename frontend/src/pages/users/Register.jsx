@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/UserContext.jsx";
 import { registerUser } from "../../controllers/userControllers.js";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   // Set document title on the first render of page/ on mount as 'Register'
@@ -47,9 +47,10 @@ const Register = () => {
   };
   return (
     <section className="form-card">
-      <h1>QEQWEASDA</h1>
+      <h1 className="form-title">Create an account</h1>
       <form onSubmit={handleRegister}>
         <input
+          className="form-input"
           type="text"
           autoFocus
           autoComplete="username"
@@ -62,6 +63,7 @@ const Register = () => {
           }
         />
         <input
+          className="form-input"
           type="password"
           placeholder="Password"
           name="password"
@@ -72,6 +74,7 @@ const Register = () => {
           }
         />
         <input
+          className="form-input"
           type="password"
           placeholder="Confirm Password"
           name="passwordConfirm"
@@ -81,8 +84,19 @@ const Register = () => {
             setFormData({ ...formData, passwordConfirm: e.target.value })
           }
         />
-        <button>Register</button>
+        <button className="form-btn">Register</button>
       </form>
+      <div className="h-px w-full bg-gradient-to-r from-primary-50 via-primary-500/70 to-primary-50 mt-8 mb-6"></div>
+      <p className=" text-sm px-1">
+        Already have an account?{" "}
+        <Link to="/login">
+          Click to{" "}
+          <span className="text-primary hover:opacity-90 active:text-primary-600">
+            {" "}
+            Log In!
+          </span>
+        </Link>
+      </p>
       {/* Display error message if error state is not empty */}
       {error && <p>{error}</p>}
     </section>

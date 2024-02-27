@@ -7,6 +7,18 @@
     @apply rounded-lg py-2 px-4 text-base hover:bg-dark-800 hover:text-orange-500 active:text-orange-600 transition duration-200 ease-in;
   }
   .nav-link-logo {
-    @apply size-10 hover:bg-primary transition-colors duration-200 rounded-full active:bg-primary-600;
+    @apply size-10 hover:opacity-90 hover:bg-primary transition duration-200 rounded-full active:bg-primary-600;
+  }
+  .form-card {
+    @apply bg-light-50 p-8 rounded-lg min-w-[260px] shadow-custom shadow-dark-950  max-w-[440px] mx-auto;
+  }
+  .form-title {
+    @apply mb-6 font-bold text-lg text-center;
+  }
+  .form-input {
+    @apply border-0 outline-0 block w-full ring-1 rounded-md focus:ring-2 bg-light-50 ring-primary placeholder:text-sm py-1.5 my-4 px-2;
+  }
+  .form-btn {
+    @apply hover:opacity-90 block w-full bg-primary-500 text-light-50 rounded-md py-1.5 active:bg-primary-600;
   }
 }

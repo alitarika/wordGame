@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/UserContext.jsx";
 import { loginUser } from "../../controllers/userControllers.js";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   // Set document title on the first render of page/ on mount as 'Log In'
@@ -44,9 +44,10 @@ const Login = () => {
 
   return (
     <section className="form-card">
-      <h1>qweQWEQDAS</h1>
+      <h1 className="form-title">Log In to your account</h1>
       <form onSubmit={handleLogin}>
         <input
+          className="form-input"
           type="text"
           autoFocus
           autoComplete="username"
@@ -59,6 +60,7 @@ const Login = () => {
           }
         />
         <input
+          className="form-input"
           type="password"
           placeholder="Password"
           name="password"
@@ -68,8 +70,19 @@ const Login = () => {
             setFormData({ ...formData, password: e.target.value })
           }
         />
-        <button>Login</button>
+        <button className="form-btn">Login</button>
       </form>
+      <div className="h-px w-full bg-gradient-to-r from-primary-50 via-primary-500/70 to-primary-50 mt-8 mb-6"></div>
+      <p className=" text-sm px-1">
+        Don't have an account?{" "}
+        <Link to="/register">
+          Click to{" "}
+          <span className="text-primary hover:opacity-90 active:text-primary-600">
+            Register!
+          </span>
+        </Link>
+      </p>
+
       {/* Display error message if error state is not empty */}
       {error && <p>{error}</p>}
     </section>
