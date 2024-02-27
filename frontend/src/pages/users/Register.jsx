@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/UserContext.jsx";
 import { registerUser } from "../../controllers/userControllers.js";
 import { Link, useNavigate } from "react-router-dom";
+import { enqueueSnackbar } from "notistack";
 
 const Register = () => {
   // Set document title on the first render of page/ on mount as 'Register'
@@ -22,9 +23,6 @@ const Register = () => {
     passwordConfirm: "",
   });
 
-  // Error state to store error message if any
-  const [error, setError] = useState("");
-
   // Handle Function for login form submission
   const handleRegister = async (e) => {
     // Prevent default behaviour of form submission
@@ -38,11 +36,20 @@ const Register = () => {
       );
       // Set user state of user context as the users username
       setUser(formData.username);
+      // Success message
+      enqueueSnackbar("Your account has successfully been created.", {
+        variant: "success",
+      });
+      // Greet user with notification
+      enqueueSnackbar(`Welcome ${formData.username}!`, {
+        variant: "welcome",
+        className: "bg-primary-700 text-light",
+      });
       // Navigate to homepage on successful register
       navigate("/");
     } catch (error) {
-      setError(error.message); // set error state as state message string
-      console.log(error); // Log the error
+      // Display error notification if any
+      enqueueSnackbar(error.message, { variant: "error" });
     }
   };
   return (
@@ -86,7 +93,7 @@ const Register = () => {
         />
         <button className="form-btn">Register</button>
       </form>
-      <div className="h-px w-full bg-gradient-to-r from-primary-50 via-primary-500/70 to-primary-50 mt-8 mb-6"></div>
+      <div className="h-px w-full bg-gradient-to-r from-primary-50 via-primary-500/90 to-primary-50 mt-8 mb-6"></div>
       <p className=" text-sm px-1">
         Already have an account?{" "}
         <Link to="/login">
@@ -97,8 +104,6 @@ const Register = () => {
           </span>
         </Link>
       </p>
-      {/* Display error message if error state is not empty */}
-      {error && <p>{error}</p>}
     </section>
   );
 };

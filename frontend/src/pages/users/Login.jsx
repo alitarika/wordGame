@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/UserContext.jsx";
 import { loginUser } from "../../controllers/userControllers.js";
 import { Link, useNavigate } from "react-router-dom";
+import { enqueueSnackbar } from "notistack";
 
 const Login = () => {
   // Set document title on the first render of page/ on mount as 'Log In'
@@ -21,9 +22,6 @@ const Login = () => {
     password: "",
   });
 
-  // Error state to store error message if any
-  const [error, setError] = useState("");
-
   // Handle Function for login form submission
   const handleLogin = async (e) => {
     // Prevent default behaviour of form submission
@@ -34,11 +32,16 @@ const Login = () => {
       await loginUser(formData.username, formData.password);
       // Set user state of user context as the users username
       setUser(formData.username);
+      // Greet user with notification
+      enqueueSnackbar(`Welcome ${formData.username}!`, {
+        variant: "welcome",
+        className: "bg-primary-700 text-light",
+      });
       // Navigate to homepage on successful login
       navigate("/");
     } catch (error) {
-      setError(error.message); // set error state as state message string
-      console.log(error); // Log the error
+      // Display error notification if any
+      enqueueSnackbar(error.message, { variant: "error" });
     }
   };
 
@@ -72,7 +75,7 @@ const Login = () => {
         />
         <button className="form-btn">Login</button>
       </form>
-      <div className="h-px w-full bg-gradient-to-r from-primary-50 via-primary-500/70 to-primary-50 mt-8 mb-6"></div>
+      <div className="h-px w-full bg-gradient-to-r from-primary-50 via-primary-500/90 to-primary-50 mt-8 mb-6"></div>
       <p className=" text-sm px-1">
         Don't have an account?{" "}
         <Link to="/register">
@@ -82,9 +85,6 @@ const Login = () => {
           </span>
         </Link>
       </p>
-
-      {/* Display error message if error state is not empty */}
-      {error && <p>{error}</p>}
     </section>
   );
 };

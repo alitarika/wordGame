@@ -3,6 +3,7 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import { logoutUser } from "../controllers/userControllers.js";
 import logo from "../assets/logo.svg";
+import { enqueueSnackbar } from "notistack";
 
 const Layout = () => {
   // Get user state and user setter function from the user context
@@ -16,6 +17,10 @@ const Layout = () => {
       logoutUser();
       setUser(null);
       navigate("/");
+      enqueueSnackbar("Come back soon! Your Words will miss you!", {
+        variant: "welcome",
+        className: "bg-primary-700 text-light",
+      });
     }
   };
 
