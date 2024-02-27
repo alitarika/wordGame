@@ -1,4 +1,4 @@
-const BaseURL = "http://localhost:3001";
+export const BaseURL = "http://localhost:3001";
 // Login user
 export const loginUser = async (username, password) => {
   if (!username || !password) {

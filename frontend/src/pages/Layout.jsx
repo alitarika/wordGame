@@ -33,6 +33,9 @@ const Layout = () => {
           </Link>
           {user ? (
             <div>
+              <Link className="nav-link-text" title="words" to="/userswords">
+                words
+              </Link>
               <button
                 className="nav-link-text"
                 title="Log Out"

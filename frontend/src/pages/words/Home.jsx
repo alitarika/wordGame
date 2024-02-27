@@ -1,23 +1,20 @@
-import React from "react";
-import { enqueueSnackbar } from "notistack";
+import React, { useContext } from "react";
+import { WordListContext } from "../../contexts/WordListContext";
 
 const Home = () => {
-  const handleClick = () => {
-    enqueueSnackbar("Snack Bar Delete", {
-      variant: "success",
-    });
-  };
-  const handleCl = () => {
-    enqueueSnackbar("Snack Bar Delete", {
-      variant: "delete",
-      className: "bg-red-500",
-    });
-  };
+  const { wordList } = useContext(WordListContext);
   return (
     <div className="bg-primary size-32 flex flex-col">
       Home
-      <button onClick={handleClick}>Click me!</button>
-      <button onClick={handleCl}>---CL!</button>
+      <div>
+        {wordList.map((a) => (
+          <div key={a._id}>
+            <p>
+              {a.original}-{a.translation}
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

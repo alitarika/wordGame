@@ -4,9 +4,9 @@ import App from "./App.jsx";
 import "../src/assets/app.css";
 import { SnackbarProvider } from "notistack";
 import UserProvider from "./contexts/UserContext.jsx";
+import WordListProvider from "./contexts/WordListContext.jsx";
 import { MdDeleteForever } from "react-icons/md";
 import { PiHandWavingFill } from "react-icons/pi";
-import { FaThumbsUp } from "react-icons/fa";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -17,11 +17,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       iconVariant={{
         delete: <MdDeleteForever className="mr-1.5 size-[18.67px]" />,
         welcome: <PiHandWavingFill className=" mr-2 size-[16.67px]" />,
-        success: <FaThumbsUp className="mr-2 pb-0.5 pl-0.5 size-[16.67px]" />,
       }}
     >
       <UserProvider>
-        <App />
+        <WordListProvider>
+          <App />
+        </WordListProvider>
       </UserProvider>
     </SnackbarProvider>
   </React.StrictMode>
