@@ -33,7 +33,7 @@ const Login = () => {
       // Set user state of user context as the users username
       setUser(formData.username);
       // Greet user with notification
-      enqueueSnackbar(`Welcome ${formData.username}!`, {
+      enqueueSnackbar(`Welcome back ${formData.username}!`, {
         variant: "welcome",
         className: "bg-primary-700 text-light",
       });

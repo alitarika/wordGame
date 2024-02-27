@@ -3,7 +3,7 @@ import { enqueueSnackbar } from "notistack";
 
 const Home = () => {
   const handleClick = () => {
-    enqueueSnackbar("Snack Bar Created", {
+    enqueueSnackbar("Snack Bar Delete", {
       variant: "success",
     });
   };
@@ -14,7 +14,7 @@ const Home = () => {
     });
   };
   return (
-    <div className="bg-primary size-96">
+    <div className="bg-primary size-32 flex flex-col">
       Home
       <button onClick={handleClick}>Click me!</button>
       <button onClick={handleCl}>---CL!</button>
