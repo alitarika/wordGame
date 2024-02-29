@@ -1,28 +1,12 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { WordListContext } from "../../contexts/WordListContext.jsx";
-import { getUserWordList } from "../../controllers/wordListControllers";
-import { enqueueSnackbar } from "notistack";
 
 const UsersWords = () => {
-  const { wordList, setWordList } = useContext(WordListContext);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getUserWordList();
-        setWordList(data);
-        console.log(data); // Log the fetched data instead of wordList which might not be updated immediately
-      } catch (error) {
-        enqueueSnackbar(error.message, { variant: "error" });
-        console.error("Error fetching user word list:", error);
-      }
-    };
-
-    fetchData(); // Call fetchData directly inside useEffect
-  }, []); // Empty dependency array to run the effect only once on mount
+  const { wordList } = useContext(WordListContext);
 
   return (
     <div>
+      <h1>Your words:</h1>
       {wordList.map((a) => (
         <div key={a._id}>
           <p>
