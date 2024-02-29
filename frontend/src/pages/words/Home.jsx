@@ -4,7 +4,7 @@ import { WordListContext } from "../../contexts/WordListContext";
 const Home = () => {
   const { wordList } = useContext(WordListContext);
   return (
-    <div className="bg-primary size-32 flex flex-col">
+    <div>
       Home
       <div>
         {wordList.map((a) => (

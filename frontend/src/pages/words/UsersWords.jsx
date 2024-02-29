@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { WordListContext } from "../../contexts/WordListContext.jsx";
 import { getUserWordList } from "../../controllers/wordListControllers";
+import { enqueueSnackbar } from "notistack";
 
 const UsersWords = () => {
   const { wordList, setWordList } = useContext(WordListContext);
@@ -12,6 +13,7 @@ const UsersWords = () => {
         setWordList(data);
         console.log(data); // Log the fetched data instead of wordList which might not be updated immediately
       } catch (error) {
+        enqueueSnackbar(error.message, { variant: "error" });
         console.error("Error fetching user word list:", error);
       }
     };
