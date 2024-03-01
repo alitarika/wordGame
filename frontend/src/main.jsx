@@ -14,6 +14,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       autoHideDuration={4000}
       anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       maxSnack={2}
+      className="text-light"
       iconVariant={{
         delete: <MdDeleteForever className="mr-1.5 size-[18.67px]" />,
         welcome: <PiHandWavingFill className=" mr-2 size-[16.67px]" />,

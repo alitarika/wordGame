@@ -10,6 +10,7 @@ const WordListProvider = ({ children }) => {
   console.log();
   // word list state that will be shared to context
   const [wordList, setWordList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   // parse user from context
   const { user } = useContext(UserContext);
@@ -20,6 +21,7 @@ const WordListProvider = ({ children }) => {
       getUserWordList()
         .then((data) => {
           setWordList(data);
+          setLoading(false);
           console.log("wordList is fetched:", data);
         })
         .catch((error) => {
@@ -30,13 +32,14 @@ const WordListProvider = ({ children }) => {
         });
     } else {
       setWordList([]);
+      setLoading(false);
       console.log("User logged out. word list is cleared.");
     }
   }, [user]); // Put user in dependency array to fetch on login and clear on logout
 
   // Provider wrapper for wordlist context
   return (
-    <WordListContext.Provider value={{ wordList, setWordList }}>
+    <WordListContext.Provider value={{ wordList, setWordList, loading }}>
       {children}
     </WordListContext.Provider>
   );

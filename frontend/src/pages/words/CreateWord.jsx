@@ -28,8 +28,9 @@ const CreateWord = () => {
         formData.translation
       );
       setWordList((previousWordList) => [newWordPair, ...previousWordList]);
-      enqueueSnackbar("Your word has successfully been added to your list.", {
+      enqueueSnackbar(`${formData.original} has been added to your list.`, {
         variant: "success",
+        className: "bg-green-700",
       });
       navigate("/userswords");
     } catch (error) {

@@ -33,9 +33,6 @@ const Layout = () => {
           </Link>
           {user ? (
             <div>
-              <Link className="nav-link-text" title="words" to="/">
-                {user}
-              </Link>
               <Link
                 className="nav-link-text"
                 title="Add new word"
@@ -67,7 +64,7 @@ const Layout = () => {
           )}
         </nav>
       </header>
-      <div className="px-4 py-8 w-full">
+      <div className="p-8 w-full">
         <Outlet />
       </div>
     </>

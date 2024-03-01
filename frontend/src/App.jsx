@@ -5,6 +5,7 @@ import Login from "./pages/users/Login";
 import Register from "./pages/users/Register";
 import UsersWords from "./pages/words/UsersWords";
 import CreateWord from "./pages/words/CreateWord";
+import ModifyWord from "./pages/words/ModifyWord";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           <Route path="login" element={<Login />} />
           <Route path="userswords" element={<UsersWords />} />
           <Route path="create-word" element={<CreateWord />} />
+          <Route path="modify-word" element={<ModifyWord />} />
         </Route>
       </Routes>
     </BrowserRouter>
