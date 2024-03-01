@@ -36,6 +36,13 @@ const Layout = () => {
               <Link className="nav-link-text" title="words" to="/">
                 {user}
               </Link>
+              <Link
+                className="nav-link-text"
+                title="Add new word"
+                to="/create-word"
+              >
+                Plus
+              </Link>
               <Link className="nav-link-text" title="words" to="/userswords">
                 words
               </Link>

@@ -7,6 +7,7 @@ const UsersWords = () => {
   return (
     <div>
       <h1>Your words:</h1>
+      <h2>Total {wordList.length} words</h2>
       {wordList.map((a) => (
         <div key={a._id}>
           <p>

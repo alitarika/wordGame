@@ -21,7 +21,7 @@ const auth = async (req, res, next) => {
     // Decrypt the token with the SECRET and destruct/parse user _id
     const { id } = jwt.verify(token, SECRET);
 
-    // Find user and select it and send it to request
+    // Find user and select id of it and send it to request
     req.user = await User.findById(id).select("_id");
 
     // Go to the next func or middleware
