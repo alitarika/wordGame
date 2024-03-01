@@ -4,7 +4,10 @@
 
 @layer components {
   .nav-link-text {
-    @apply rounded-lg py-2 px-4 text-base hover:bg-dark-800 hover:text-orange-500 active:text-orange-600 transition duration-200 ease-in hover:shadow-inner hover:shadow-dark-600 active:shadow-dark-700;
+    @apply rounded-lg py-2 ml-2 px-4 text-base hover:bg-dark-800 hover:text-primary-500 active:text-primary-600 transition duration-200 ease-in hover:shadow-inner hover:shadow-dark-600 active:shadow-dark-700;
+  }
+  .nav-link-icon {
+    @apply rounded-full text-2xl p-2 ml-2  hover:text-primary-500 active:text-primary-600 transition duration-200 ease-in;
   }
   .nav-link-logo {
     @apply size-10 hover:bg-primary transition duration-200 rounded-full active:bg-primary-600 hover:shadow-inner hover:shadow-primary-300;

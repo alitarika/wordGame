@@ -4,6 +4,7 @@ import { UserContext } from "../contexts/UserContext";
 import { logoutUser } from "../controllers/userControllers.js";
 import logo from "../assets/logo.svg";
 import { enqueueSnackbar } from "notistack";
+import { MdAddCircle } from "react-icons/md";
 
 const Layout = () => {
   // Get user state and user setter function from the user context
@@ -32,13 +33,13 @@ const Layout = () => {
             <img src={logo} />
           </Link>
           {user ? (
-            <div>
+            <div className="flex items-center">
               <Link
-                className="nav-link-text"
+                className="nav-link-icon"
                 title="Add new word"
                 to="/create-word"
               >
-                Plus
+                <MdAddCircle />
               </Link>
               <Link className="nav-link-text" title="words" to="/userswords">
                 words

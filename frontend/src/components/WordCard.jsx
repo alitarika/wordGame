@@ -34,19 +34,21 @@ const WordCard = ({ word }) => {
     <div className="relative">
       <button
         onClick={handleDelete}
-        className="absolute rounded-full size-5 text-primary-500 top-5 left-5  hover:size-7 hover:top-4 hover:left-4"
+        className="absolute rounded-full size-5 text-primary-700 top-5 left-5  hover:size-7 hover:top-4 hover:left-4"
       >
         <MdDeleteForever className="mx-auto text-xl hover:text-3xl" />
       </button>
-      <Link title="Modify Word" to="/modify-word">
+      <Link title="Modify Word" to="/modify-word" state={word}>
         <MdChangeCircle className="absolute size-5 hover:size-7 hover:right-4 hover:top-4 text-dark bg-light rounded-full top-5 right-5" />
       </Link>
       <div className=" h-px w-full bg-gradient-to-r from-light-50 via-light-200/90 to-light-50"></div>
       <div
         className={`p-2 text-center hover:shadow-custom hover:cursor-pointer rounded-lg ${cardTextColorClassName}`}
       >
-        <p className="font-bold">{word.original}</p>
-        <p className=" saturate-[.8] opacity-80 text-sm">{word.translation}</p>
+        <p className="px-12 font-bold truncate">{word.original}</p>
+        <p className="px-12 saturate-[.8] opacity-80 text-sm truncate">
+          {word.translation}
+        </p>
       </div>
     </div>
   );

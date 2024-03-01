@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import Word from "../models/WordModel.js";
 import User from "../models/UserModel.js";
 
-// Get User's words. (In chronological order)
+// Get User's words. (In chronological order based on update)
 export const getUserWords = async (req, res) => {
   // Parse authenticated user from req.user
   // req.user is provided via auth.js middleware
@@ -11,7 +11,7 @@ export const getUserWords = async (req, res) => {
   // Get user's words sorted as last created at top and send as json response.
   try {
     const userWords = await Word.find({ user_id: user._id }).sort({
-      createdAt: "desc",
+      updatedAt: "desc",
     });
     res.status(200).json(userWords);
   } catch (error) {
@@ -82,7 +82,7 @@ export const updateWord = async (req, res) => {
   if (!original || !translation) {
     return res.status(400).json({
       error:
-        "Please fill in both of the fields as they are both necessary to create your word-translation pair.",
+        "Please fill in both of the fields as they are both necessary to modify your word-translation pair.",
     });
   }
 
