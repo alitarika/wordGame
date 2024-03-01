@@ -20,7 +20,7 @@ const UsersWords = () => {
       {wordList.map((word) => (
         <WordCard key={word._id} word={word} />
       ))}
-      <div className="h-px w-full bg-gradient-to-r from-primary-50 via-primary-500/90 to-primary-50"></div>
+      {/* <div className="h-px w-full bg-gradient-to-r from-primary-50 via-primary-500/90 to-primary-50"></div> */}
     </div>
   );
 };
