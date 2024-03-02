@@ -27,6 +27,8 @@ const WordSchema = new Schema(
   { timestamps: true }
 );
 
+WordSchema.index({ user_id: 1, original: 1 }, { unique: true });
+
 const Word = model("Word", WordSchema);
 
 export default Word;

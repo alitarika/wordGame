@@ -15,8 +15,13 @@ const Home = () => {
     setAlphabetical(!alphabetical);
   };
 
+  const myRandNumb = Math.floor(Math.random() * wordList.length);
+  const randomWord = wordList[myRandNumb];
+  console.log("myrand", randomWord);
+
   return (
     <div>
+      <p className="bg-red-500">Random: {randomWord?.original}</p>
       Home
       <button onClick={handleClick}>alphabetical</button>
       <div>
@@ -30,17 +35,6 @@ const Home = () => {
       </div>
     </div>
   );
-  // const [checked, setChecked] = useState(false);
-  // return (
-  //   <div className="App">
-  //     Checked or not
-  //     <input
-  //       type="checkbox"
-  //       onChange={(event) => setChecked(event.target.checked)}
-  //     />
-  //     <p>{checked ? "Yes" : "Not checked"}</p>
-  //   </div>
-  // );
 };
 
 export default Home;

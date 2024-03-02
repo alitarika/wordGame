@@ -3,6 +3,8 @@ import { WordListContext } from "../../contexts/WordListContext.jsx";
 import WordCard from "../../components/WordCard.jsx";
 import { UserContext } from "../../contexts/UserContext.jsx";
 import { Link } from "react-router-dom";
+import { MdAbc } from "react-icons/md";
+import { MdAccessTimeFilled } from "react-icons/md";
 
 const UsersWords = () => {
   const { user } = useContext(UserContext);
@@ -32,19 +34,25 @@ const UsersWords = () => {
       {loading ? (
         <p className="text-center">loading...</p>
       ) : (
-        <>
+        <div className="relative">
           {renderedWordList.length > 0 ? (
             <>
+              <button
+                onClick={handleClick}
+                className="absolute right-0 -top-8 text-primary-600 hover:text-primary-700"
+              >
+                {alphabeticallySorted ? (
+                  <MdAccessTimeFilled className="size-8 p-px mt-2 mr-2" />
+                ) : (
+                  <MdAbc className="size-12" />
+                )}
+              </button>
               <h2 className="text-center my-3 text-primary">
                 <span className=" font-bold text-lg">
                   {renderedWordList.length}
                 </span>{" "}
                 words
               </h2>
-              <button onClick={handleClick}>
-                Sort{" "}
-                {alphabeticallySorted ? "chronologically" : "alphabetically"}
-              </button>
             </>
           ) : (
             <h2 className="text-center my-3 text-dark-600">
@@ -63,7 +71,7 @@ const UsersWords = () => {
             <WordCard key={word._id} word={word} />
           ))}
           <div className="h-px w-full bg-gradient-to-r from-light-50 via-light-200/90 to-light-50"></div>
-        </>
+        </div>
       )}
     </div>
   );

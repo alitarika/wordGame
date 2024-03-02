@@ -65,7 +65,12 @@ export const createWord = async (req, res) => {
     });
     res.status(200).json(word);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    if (error.code === 11000) {
+      // Handle duplicate key error
+      res.status(400).json({ error: "This word already exists in your list." });
+    } else {
+      res.status(500).json({ error: error.message });
+    }
   }
 };
 
@@ -121,7 +126,16 @@ export const updateWord = async (req, res) => {
       updatedWord,
     });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    {
+      if (error.code === 11000) {
+        // Handle duplicate key error
+        res.status(400).json({
+          error: "This word already exists within your list.",
+        });
+      } else {
+        res.status(500).json({ error: error.message });
+      }
+    }
   }
 };
 
