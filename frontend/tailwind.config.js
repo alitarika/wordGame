@@ -3,6 +3,15 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      keyframes: {
+        flash: {
+          "0%, 100%": { opacity: "0" },
+          "50%": { opacity: "0.6" },
+        },
+      },
+      animation: {
+        flash: "flash 0.5s ease-in-out 1",
+      },
       boxShadow: {
         custom: "0 15px 40px -15px",
       },
