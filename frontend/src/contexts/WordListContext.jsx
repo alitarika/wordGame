@@ -22,7 +22,6 @@ const WordListProvider = ({ children }) => {
         .then((data) => {
           setWordList(data);
           setLoading(false);
-          console.log("wordList is fetched:", data);
         })
         .catch((error) => {
           enqueueSnackbar(`Failed to fetch your words: ${error.message}`, {

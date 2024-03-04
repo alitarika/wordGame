@@ -41,6 +41,9 @@ const Layout = () => {
               >
                 <MdAddCircle />
               </Link>
+              <Link className="nav-link-text" title="training" to="/training">
+                training
+              </Link>
               <Link className="nav-link-text" title="words" to="/userswords">
                 words
               </Link>
