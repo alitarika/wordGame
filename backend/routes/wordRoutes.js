@@ -6,6 +6,8 @@ import {
   getUserMistakenWords,
   updateWord,
   deleteWord,
+  markWordAsMistaken,
+  markWordAsNotMistaken,
 } from "../controllers/wordControllers.js";
 
 const router = express.Router();
@@ -26,5 +28,11 @@ router.put("/:id", updateWord);
 
 // Delete a (original)word-translation pair
 router.delete("/:id", deleteWord);
+
+// Modify word as mistaken
+router.put("/mistaken/:id", markWordAsMistaken);
+
+// Modify word as NOT mistaken
+router.put("/notmistaken/:id", markWordAsNotMistaken);
 
 export { router as wordRoutes };

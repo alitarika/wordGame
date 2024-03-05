@@ -180,3 +180,77 @@ export const deleteWord = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+export const markWordAsMistaken = async (req, res) => {
+  // Parse word's id from url/request parameters.
+  const { id } = req.params;
+
+  // Check whether or not ID is of valid type.
+  // If not return error.
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({
+      error: "No word is found with this ID. (ID is invalid type.)",
+    });
+  }
+
+  try {
+    const word = await Word.findById(id);
+    if (!word) {
+      return res.status(404).json({ error: "Word not found." });
+    }
+
+    const user = await User.findById(req.user._id);
+    if (!word.user_id.equals(user._id)) {
+      return res.status(401).json({
+        error: "Not authorized to mark this word as mistaken.",
+      });
+    }
+
+    word.mistaken = true;
+    await word.save();
+
+    res.status(200).json({
+      message: "Word marked as mistaken successfully.",
+      word,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const markWordAsNotMistaken = async (req, res) => {
+  // Parse word's id from url/request parameters.
+  const { id } = req.params;
+
+  // Check whether or not ID is of valid type.
+  // If not return error.
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({
+      error: "No word is found with this ID. (ID is invalid type.)",
+    });
+  }
+
+  try {
+    const word = await Word.findById(id);
+    if (!word) {
+      return res.status(404).json({ error: "Word not found." });
+    }
+
+    const user = await User.findById(req.user._id);
+    if (!word.user_id.equals(user._id)) {
+      return res.status(401).json({
+        error: "Not authorized to mark this word as NOT mistaken.",
+      });
+    }
+
+    word.mistaken = false;
+    await word.save();
+
+    res.status(200).json({
+      message: "Word marked as NOT mistaken successfully.",
+      word,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

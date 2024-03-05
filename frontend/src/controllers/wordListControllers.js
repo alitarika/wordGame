@@ -84,3 +84,35 @@ export const deleteWord = async (id) => {
 
   return data;
 };
+
+export const markWordAsMistaken = async (id) => {
+  const response = await fetch(`${BaseURL}/api/words/mistaken/${id}`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw Error(data.error || "Failed to mark the word as mistaken");
+  }
+
+  return data;
+};
+
+export const markWordAsNotMistaken = async (id) => {
+  const response = await fetch(`${BaseURL}/api/words/notmistaken/${id}`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw Error(data.error || "Failed to mark the word as mistaken");
+  }
+
+  return data;
+};

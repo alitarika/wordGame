@@ -3,9 +3,16 @@ import TrainingCard from "../../components/TrainingCard";
 import { WordListContext } from "../../contexts/WordListContext";
 import { enqueueSnackbar } from "notistack";
 import Flash from "../../components/Flash";
+import {
+  markWordAsMistaken,
+  markWordAsNotMistaken,
+} from "../../controllers/wordListControllers";
 
 const Training = () => {
-  const { wordList } = useContext(WordListContext);
+  useEffect(() => {
+    document.title = "Word Game";
+  });
+  const { wordList, setWordList } = useContext(WordListContext);
 
   const [centerWord, setCenterWord] = useState(null);
   const [options, setOptions] = useState([]);
@@ -42,12 +49,21 @@ const Training = () => {
     setOptions(incorrectOptions);
   };
 
-  const handleOptionClick = (index) => {
+  const handleOptionClick = async (index) => {
     if (index === correctIndex) {
       setFlashGreen(true);
       setTimeout(() => setFlashGreen(false), 500);
-      setStreakCount(streakCount + 1);
-      setCorrectAnswerCount(correctAnswerCount + 1);
+      setStreakCount((prev) => prev + 1);
+      setCorrectAnswerCount((prev) => prev + 1);
+      try {
+        if (centerWord.mistaken) {
+          const data = await markWordAsNotMistaken(centerWord._id);
+          const filteredList = wordList.filter((w) => w._id !== centerWord._id);
+          setWordList([data.word, ...filteredList]);
+        }
+      } catch (error) {
+        enqueueSnackbar(error.message, { variant: "error" });
+      }
     } else {
       setFlashRed(true);
       setTimeout(() => setFlashRed(false), 500);
@@ -59,6 +75,15 @@ const Training = () => {
           className: "bg-red-700",
         }
       );
+      try {
+        if (!centerWord.mistaken) {
+          const data = await markWordAsMistaken(centerWord._id);
+          const filteredList = wordList.filter((w) => w._id !== centerWord._id);
+          setWordList([data.word, ...filteredList]);
+        }
+      } catch (error) {
+        enqueueSnackbar(error.message, { variant: "error" });
+      }
     }
 
     nextRound(); // Set up the next round
@@ -66,10 +91,16 @@ const Training = () => {
 
   return (
     <>
-      <p className="absolute bottom-4 left-4 text-primary bg-light-50 p-2 rounded-lg">
+      <p
+        aria-live="polite"
+        className="absolute bottom-4 left-4 text-primary bg-light-50 p-2 rounded-lg"
+      >
         Streak: {streakCount}
       </p>
-      <p className="absolute bottom-4 right-4 text-primary bg-light-50 p-2 rounded-lg">
+      <p
+        aria-live="polite"
+        className="absolute bottom-4 right-4 text-primary bg-light-50 p-2 rounded-lg"
+      >
         Total: {correctAnswerCount}
       </p>
       {flashGreen && <Flash bg={"bg-green-600"} />}
