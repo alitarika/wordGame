@@ -25,3 +25,9 @@
     @apply shadow-inner shadow-primary-300 active:shadow-primary-200 hover:opacity-90 block w-full bg-primary-500  text-light-50 rounded-md py-1.5 active:bg-primary-600;
   }
 }
+
+@layer utilities {
+  .gradient-text {
+    @apply text-transparent font-extrabold bg-clip-text bg-gradient-to-tl from-light-100 to-primary-600;
+  }
+}

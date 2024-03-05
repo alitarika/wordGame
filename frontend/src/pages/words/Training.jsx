@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
+import { enqueueSnackbar } from "notistack";
 import TrainingCard from "../../components/TrainingCard";
 import { WordListContext } from "../../contexts/WordListContext";
-import { enqueueSnackbar } from "notistack";
 import Flash from "../../components/Flash";
 import {
   markWordAsMistaken,
@@ -12,7 +12,7 @@ const Training = () => {
   useEffect(() => {
     document.title = "Word Game";
   });
-  const { wordList, setWordList } = useContext(WordListContext);
+  const { wordList, setWordList, loading } = useContext(WordListContext);
 
   const [centerWord, setCenterWord] = useState(null);
   const [options, setOptions] = useState([]);
@@ -21,10 +21,11 @@ const Training = () => {
   const [flashRed, setFlashRed] = useState(false);
   const [streakCount, setStreakCount] = useState(0);
   const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
 
   useEffect(() => {
     nextRound();
-  }, []);
+  }, [wordList, loading]);
 
   const nextRound = () => {
     if (wordList.length === 0) return; // Guard clause in case wordList is empty
@@ -85,39 +86,48 @@ const Training = () => {
         enqueueSnackbar(error.message, { variant: "error" });
       }
     }
-
+    setTotalCount((prev) => prev + 1);
     nextRound(); // Set up the next round
   };
 
   return (
     <>
-      <p
-        aria-live="polite"
-        className="absolute bottom-4 left-4 text-primary bg-light-50 p-2 rounded-lg"
-      >
-        Streak: {streakCount}
-      </p>
-      <p
-        aria-live="polite"
-        className="absolute bottom-4 right-4 text-primary bg-light-50 p-2 rounded-lg"
-      >
-        Total: {correctAnswerCount}
-      </p>
-      {flashGreen && <Flash bg={"bg-green-600"} />}
-      {flashRed && <Flash bg={"bg-red-600"} />}
-      <div className="my-auto sm:w-[500px] m-auto h-full relative">
-        <div className="absolute left-[116px] top-12 m-4 -z-10">
-          <TrainingCard>{centerWord?.original}</TrainingCard>
-        </div>
+      {loading ? (
+        "loading..."
+      ) : (
+        <>
+          <p
+            aria-live="polite"
+            className="absolute bottom-4 left-4 text-primary bg-light-50 p-2 rounded-lg"
+          >
+            Streak: {streakCount}
+          </p>
+          <p
+            aria-live="polite"
+            className="absolute bottom-4 right-4 text-primary bg-light-50 p-2 rounded-lg"
+          >
+            Total: {correctAnswerCount} / {totalCount}
+          </p>
+          {flashGreen && <Flash bg={"bg-green-600"} />}
+          {flashRed && <Flash bg={"bg-red-600"} />}
+          <div className="my-auto sm:w-[500px] m-auto h-full relative">
+            <div className="absolute left-[176px] top-12 m-4 -z-10">
+              <TrainingCard>{centerWord?.original}</TrainingCard>
+            </div>
 
-        <div className="grid grid-cols-2 gap-8 z-10">
-          {options.map((translation, index) => (
-            <TrainingCard key={index} onClick={() => handleOptionClick(index)}>
-              {translation}
-            </TrainingCard>
-          ))}
-        </div>
-      </div>
+            <div className="grid grid-cols-2 gap-8 z-10 justify-items-center">
+              {options.map((translation, index) => (
+                <TrainingCard
+                  key={index}
+                  onClick={() => handleOptionClick(index)}
+                >
+                  {translation}
+                </TrainingCard>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 };
