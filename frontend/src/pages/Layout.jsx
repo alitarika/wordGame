@@ -42,10 +42,10 @@ const Layout = () => {
                 <MdAddCircle />
               </Link>
               <Link className="nav-link-text" title="training" to="/training">
-                training
+                trng
               </Link>
               <Link className="nav-link-text" title="words" to="/userswords">
-                words
+                wrd
               </Link>
               <button
                 className="nav-link-text"
@@ -53,7 +53,7 @@ const Layout = () => {
                 to="/"
                 onClick={handleLogout}
               >
-                Log Out
+                LogOut
               </button>
             </div>
           ) : (

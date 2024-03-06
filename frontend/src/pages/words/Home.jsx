@@ -7,10 +7,9 @@ const Home = () => {
   });
 
   return (
-    <div>
-      <h1 className="gradient-text">
-        ASDASDASD ASDASD <br />
-        ASDASD ASDASD
+    <div className="flex-col">
+      <h1 className="gradient-text text-[10vmin] text-balance text-center p-4 ">
+        Practicing Your Words Has Never Been This Fun
       </h1>
       <RandomWordCard />
     </div>
