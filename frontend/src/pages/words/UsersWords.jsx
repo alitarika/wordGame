@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { WordListContext } from "../../contexts/WordListContext.jsx";
 import WordCard from "../../components/WordCard.jsx";
+import WordCardSkeleton from "../../components/WordCardSkeleton.jsx";
 import { UserContext } from "../../contexts/UserContext.jsx";
 import { Link } from "react-router-dom";
 import { MdAbc } from "react-icons/md";
@@ -32,7 +33,31 @@ const UsersWords = () => {
   return (
     <div className="max-w-[440px] bg-light-50 p-4 m-auto rounded-lg">
       {loading ? (
-        <p className="text-center">loading...</p>
+        <>
+          <div className="relative">
+            <>
+              <button
+                onClick={handleClick}
+                className="absolute right-0 -top-8 text-primary-600 hover:text-primary-700"
+              >
+                {alphabeticallySorted ? (
+                  <MdAccessTimeFilled className="size-8 p-px mt-2 mr-2" />
+                ) : (
+                  <MdAbc className="size-12" />
+                )}
+              </button>
+              <h2 className="text-center my-3 text-primary">
+                <span className=" font-bold text-lg">XXX</span> words
+              </h2>
+            </>
+            {/* {Array.from({ length: 20 }, (_, index) => (
+              <WordCardSkeleton key={index} />
+            ))} */}
+            {[...Array(20)].map((_, index) => (
+              <WordCardSkeleton key={index} />
+            ))}
+          </div>
+        </>
       ) : (
         <div className="relative">
           {renderedWordList.length > 0 ? (
