@@ -3,7 +3,6 @@ import auth from "../middlewares/auth.js";
 import {
   createWord,
   getUserWords,
-  getUserMistakenWords,
   updateWord,
   deleteWord,
   markWordAsMistaken,
@@ -19,9 +18,6 @@ router.post("/", createWord);
 
 // Get user's all words in chronological order
 router.get("/", getUserWords);
-
-// Get user's mistaken (guessed wrong last time) words
-router.get("/mistaken", getUserMistakenWords);
 
 // Modify/update a (original)word-translation pair
 router.put("/:id", updateWord);

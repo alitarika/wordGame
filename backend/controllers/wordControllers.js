@@ -19,25 +19,6 @@ export const getUserWords = async (req, res) => {
   }
 };
 
-// Get User's words which was guessed wrong last time.
-export const getUserMistakenWords = async (req, res) => {
-  // Parse authenticated user from req.user
-  // req.user is provided via auth.js middleware
-  const user = await User.findById(req.user._id);
-
-  try {
-    const userMistakenWords = await Word.find({
-      user_id: user._id,
-      mistaken: true,
-    }).sort({
-      updatedAt: "desc",
-    });
-    res.status(200).json(userMistakenWords);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
 // Create a new word.
 export const createWord = async (req, res) => {
   // Parse the (original) word and translation from request body

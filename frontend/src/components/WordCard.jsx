@@ -43,7 +43,7 @@ const WordCard = ({ word }) => {
       </Link>
       <div className=" h-px w-full bg-gradient-to-r from-light-50 via-light-200/90 to-light-50"></div>
       <div
-        className={`p-2 text-center hover:shadow-custom hover:cursor-pointer rounded-lg ${cardTextColorClassName}`}
+        className={`p-2 text-center hover:shadow-custom rounded-lg ${cardTextColorClassName}`}
       >
         <p className="px-12 font-bold truncate">{word.original}</p>
         <p className="px-12 saturate-[.8] opacity-80 text-sm truncate">

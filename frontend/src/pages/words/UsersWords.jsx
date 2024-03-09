@@ -50,9 +50,6 @@ const UsersWords = () => {
                 <span className=" font-bold text-lg">XXX</span> words
               </h2>
             </>
-            {/* {Array.from({ length: 20 }, (_, index) => (
-              <WordCardSkeleton key={index} />
-            ))} */}
             {[...Array(20)].map((_, index) => (
               <WordCardSkeleton key={index} />
             ))}

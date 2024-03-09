@@ -16,21 +16,6 @@ export const getUserWordList = async () => {
   return data;
 };
 
-export const getUserMistakenWords = async () => {
-  const response = await fetch(`${BaseURL}/api/words/mistaken`, {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-  });
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw Error(data.error || "Failed to fetch mistaken words");
-  }
-
-  return data;
-};
-
 // Create word-translation pair
 export const createWord = async (original, translation) => {
   const res = await fetch(`${BaseURL}/api/words`, {
