@@ -7,6 +7,7 @@ import UsersWords from "./pages/words/UsersWords";
 import CreateWord from "./pages/words/CreateWord";
 import ModifyWord from "./pages/words/ModifyWord";
 import Training from "./pages/words/Training";
+import GuestHomePage from "./pages/words/GuestHomePage";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="/guesthome" element={<GuestHomePage />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="userswords" element={<UsersWords />} />

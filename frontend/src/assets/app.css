@@ -19,15 +19,21 @@
     @apply mb-6 font-bold text-lg text-center;
   }
   .form-input {
-    @apply shadow-sm shadow-primary-800 border-0 outline-0 block w-full ring-1 rounded-md focus:ring-2 bg-light-50 ring-primary placeholder:text-sm py-1.5 my-4 px-2;
+    @apply shadow-sm shadow-primary-800 border-0 outline-0 block w-full ring-1 rounded-md focus:ring-2 bg-light-50 ring-primary placeholder:text-sm py-1.5 my-4 px-2 disabled:cursor-not-allowed;
   }
   .form-btn {
-    @apply shadow-inner shadow-primary-300 active:shadow-primary-200 hover:opacity-90 block w-full bg-primary-500  text-light-50 rounded-md py-1.5 active:bg-primary-600;
+    @apply shadow-inner shadow-primary-300 active:shadow-primary-200 hover:opacity-90 block w-full bg-primary-500  text-light-50 rounded-md py-1.5 active:bg-primary-600 disabled:cursor-not-allowed;
   }
 }
 
 @layer utilities {
   .gradient-text {
-    @apply text-transparent font-extrabold bg-clip-text bg-gradient-to-tl from-light-100 to-primary-600;
+    @apply text-transparent font-extrabold bg-clip-text bg-gradient-to-tl from-primary-300 to-primary-600;
+  }
+  .custom-text-shadow {
+    text-shadow: rgba(255, 68, 0, 0.171) -3px -3px 16px,
+      rgba(255, 68, 0, 0.171) -3px 3px 16px,
+      rgba(255, 68, 0, 0.171) 3px -3px 66px,
+      rgba(255, 68, 0, 0.171) 3px 3px 116px;
   }
 }

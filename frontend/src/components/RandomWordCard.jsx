@@ -48,9 +48,9 @@ const RandomWordCard = () => {
               Word to Practice
             </h5>
             <p className="text-base antialiased font-semibold leading-relaxed text-primary-600 py-1">
-              {randomWord?.original || "your word will be here"} <br />
+              {randomWord?.original || ":your word here:"} <br />
               <span className="text-sm font-light text-dark-900">
-                {randomWord?.translation || "translation will be here"}
+                {randomWord?.translation || ":translation here:"}
               </span>
             </p>
           </div>

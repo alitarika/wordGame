@@ -4,8 +4,9 @@ import { createWord } from "../../controllers/wordListControllers.js";
 import { enqueueSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
 
-const CreateWord = () => {
+const CreateWord = ({ disabled = false }) => {
   useEffect(() => {
+    if (disabled) return;
     document.title = "Add Word";
   });
   // form data state
@@ -21,6 +22,7 @@ const CreateWord = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (disabled) return;
 
     try {
       const newWordPair = await createWord(
@@ -48,7 +50,7 @@ const CreateWord = () => {
         <input
           className="form-input"
           type="text"
-          autoFocus
+          autoFocus={!disabled}
           placeholder="word"
           name="original"
           id="original"
@@ -56,6 +58,7 @@ const CreateWord = () => {
           onChange={(e) =>
             setFormData({ ...formData, original: e.target.value })
           }
+          disabled={disabled}
         />
         <input
           className="form-input"
@@ -67,8 +70,11 @@ const CreateWord = () => {
           onChange={(e) =>
             setFormData({ ...formData, translation: e.target.value })
           }
+          disabled={disabled}
         />
-        <button className="form-btn">Create Word</button>
+        <button className="form-btn" disabled={disabled}>
+          Create Word
+        </button>
       </form>
     </section>
   );
