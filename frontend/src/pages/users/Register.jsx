@@ -56,41 +56,59 @@ const Register = () => {
     <section className="form-card">
       <h1 className="form-title">Create an account</h1>
       <form onSubmit={handleRegister}>
-        <input
-          className="form-input"
-          type="text"
-          autoFocus
-          autoComplete="username"
-          placeholder="Username"
-          name="username"
-          id="username"
-          value={formData.username}
-          onChange={(e) =>
-            setFormData({ ...formData, username: e.target.value })
-          }
-        />
-        <input
-          className="form-input"
-          type="password"
-          placeholder="Password"
-          name="password"
-          id="password"
-          value={formData.password}
-          onChange={(e) =>
-            setFormData({ ...formData, password: e.target.value })
-          }
-        />
-        <input
-          className="form-input"
-          type="password"
-          placeholder="Confirm Password"
-          name="passwordConfirm"
-          id="passwordConfirm"
-          value={formData.passwordConfirm}
-          onChange={(e) =>
-            setFormData({ ...formData, passwordConfirm: e.target.value })
-          }
-        />
+        <div className="relative">
+          <input
+            className="form-input peer"
+            type="text"
+            autoFocus
+            autoComplete="username"
+            placeholder=" "
+            name="username"
+            id="username"
+            value={formData.username}
+            onChange={(e) =>
+              setFormData({ ...formData, username: e.target.value })
+            }
+          />
+          <label for="username" className="form-label">
+            Username
+          </label>
+        </div>
+
+        <div className="relative">
+          <input
+            className="form-input peer"
+            type="password"
+            placeholder=" "
+            name="password"
+            id="password"
+            value={formData.password}
+            onChange={(e) =>
+              setFormData({ ...formData, password: e.target.value })
+            }
+          />
+          <label for="password" className="form-label">
+            Password
+          </label>
+        </div>
+
+        <div className="relative">
+          <input
+            className="form-input peer"
+            type="password"
+            placeholder=" "
+            name="passwordConfirm"
+            id="passwordConfirm"
+            value={formData.passwordConfirm}
+            onChange={(e) =>
+              setFormData({ ...formData, passwordConfirm: e.target.value })
+            }
+          />
+          <label for="passwordConfirm" className="form-label">
+            Confirm Password
+          </label>
+        </div>
+
         <button className="form-btn">Register</button>
       </form>
       <div className="h-px w-full bg-gradient-to-r from-primary-50 via-primary-500/90 to-primary-50 mt-8 mb-6"></div>

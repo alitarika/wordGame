@@ -1,5 +1,5 @@
 import { enqueueSnackbar } from "notistack";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { updateWord } from "../../controllers/wordListControllers";
 import { WordListContext } from "../../contexts/WordListContext";
@@ -43,29 +43,52 @@ const ModifyWord = () => {
     <section className="form-card">
       <h1 className="form-title">Modify word</h1>
       <form onSubmit={handleSubmit}>
-        <input
-          className="form-input"
-          type="text"
-          autoFocus
-          placeholder={location.state.original}
-          name="original"
-          id="original"
-          value={formData.original}
-          onChange={(e) =>
-            setFormData({ ...formData, original: e.target.value })
-          }
-        />
-        <input
-          className="form-input"
-          type="text"
-          placeholder={location.state.translation}
-          name="translation"
-          id="translation"
-          value={formData.translation}
-          onChange={(e) =>
-            setFormData({ ...formData, translation: e.target.value })
-          }
-        />
+        <div className="relative">
+          <input
+            className="form-input peer"
+            type="text"
+            autoFocus
+            placeholder=" "
+            name="original"
+            id="original"
+            value={formData.original}
+            onChange={(e) =>
+              setFormData({ ...formData, original: e.target.value })
+            }
+          />
+          <label for="original" className="form-label">
+            {location.state.original == formData.original ? (
+              <>{location.state.original}</>
+            ) : (
+              <span className="line-through font-semibold decoration-primary">
+                {location.state.original}
+              </span>
+            )}
+          </label>
+        </div>
+        <div className="relative">
+          <input
+            className="form-input peer"
+            type="text"
+            placeholder=" "
+            name="translation"
+            id="translation"
+            value={formData.translation}
+            onChange={(e) =>
+              setFormData({ ...formData, translation: e.target.value })
+            }
+          />
+          <label for="translation" className="form-label">
+            {location.state.translation == formData.translation ? (
+              <>{location.state.translation}</>
+            ) : (
+              <span className="line-through font-semibold decoration-primary">
+                {location.state.translation}
+              </span>
+            )}
+          </label>
+        </div>
+
         <button className="form-btn">Modify Word</button>
       </form>
     </section>

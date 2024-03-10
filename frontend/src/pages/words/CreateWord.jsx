@@ -47,31 +47,43 @@ const CreateWord = ({ disabled = false }) => {
     <section className="form-card">
       <h1 className="form-title">Create a word</h1>
       <form onSubmit={handleSubmit}>
-        <input
-          className="form-input"
-          type="text"
-          autoFocus={!disabled}
-          placeholder="word"
-          name="original"
-          id="original"
-          value={formData.original}
-          onChange={(e) =>
-            setFormData({ ...formData, original: e.target.value })
-          }
-          disabled={disabled}
-        />
-        <input
-          className="form-input"
-          type="text"
-          placeholder="translation"
-          name="translation"
-          id="translation"
-          value={formData.translation}
-          onChange={(e) =>
-            setFormData({ ...formData, translation: e.target.value })
-          }
-          disabled={disabled}
-        />
+        <div className="relative">
+          <input
+            className="form-input peer"
+            type="text"
+            autoFocus={!disabled}
+            placeholder=" "
+            name="original"
+            id="original"
+            value={formData.original}
+            onChange={(e) =>
+              setFormData({ ...formData, original: e.target.value })
+            }
+            disabled={disabled}
+          />
+          <label for="original" className="form-label">
+            Word
+          </label>
+        </div>
+
+        <div className="relative">
+          <input
+            className="form-input peer"
+            type="text"
+            placeholder=" "
+            name="translation"
+            id="translation"
+            value={formData.translation}
+            onChange={(e) =>
+              setFormData({ ...formData, translation: e.target.value })
+            }
+            disabled={disabled}
+          />
+          <label for="translation" className="form-label">
+            Translation
+          </label>
+        </div>
+
         <button className="form-btn" disabled={disabled}>
           Create Word
         </button>

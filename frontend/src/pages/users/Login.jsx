@@ -49,30 +49,41 @@ const Login = () => {
     <section className="form-card">
       <h1 className="form-title">Log In to your account</h1>
       <form onSubmit={handleLogin}>
-        <input
-          className="form-input"
-          type="text"
-          autoFocus
-          autoComplete="username"
-          placeholder="Username"
-          name="username"
-          id="username"
-          value={formData.username}
-          onChange={(e) =>
-            setFormData({ ...formData, username: e.target.value })
-          }
-        />
-        <input
-          className="form-input"
-          type="password"
-          placeholder="Password"
-          name="password"
-          id="password"
-          value={formData.password}
-          onChange={(e) =>
-            setFormData({ ...formData, password: e.target.value })
-          }
-        />
+        <div className="relative">
+          <input
+            className="form-input peer"
+            type="text"
+            autoFocus
+            autoComplete="username"
+            placeholder=" "
+            name="username"
+            id="username"
+            value={formData.username}
+            onChange={(e) =>
+              setFormData({ ...formData, username: e.target.value })
+            }
+          />
+          <label for="username" className="form-label">
+            Username
+          </label>
+        </div>
+        <div className="relative">
+          <input
+            className="form-input peer"
+            type="password"
+            placeholder=" "
+            name="password"
+            id="password"
+            value={formData.password}
+            onChange={(e) =>
+              setFormData({ ...formData, password: e.target.value })
+            }
+          />
+          <label for="password" className="form-label">
+            Password
+          </label>
+        </div>
+
         <button className="form-btn">Login</button>
       </form>
       <div className="h-px w-full bg-gradient-to-r from-primary-50 via-primary-500/90 to-primary-50 mt-8 mb-6"></div>

@@ -98,6 +98,14 @@ export const updateWord = async (req, res) => {
     });
   }
 
+  // If there is no modification on neither word nor translation - warn user
+  if (original === word.original && translation === word.translation) {
+    return res.status(400).json({
+      error:
+        "You need to make a change in at least one of the fields to modify your word/translation pair.",
+    });
+  }
+
   // Update word, fetch updated word and send updated word and success message
   try {
     await word.updateOne({ original, translation });

@@ -1,7 +1,6 @@
 import { enqueueSnackbar } from "notistack";
 import React, { useContext } from "react";
-import { MdDeleteForever } from "react-icons/md";
-import { MdChangeCircle } from "react-icons/md";
+import { MdDeleteForever, MdChangeCircle } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { deleteWord } from "../controllers/wordListControllers";
 import { WordListContext } from "../contexts/WordListContext";
@@ -34,6 +33,7 @@ const WordCard = ({ word }) => {
     <div className="relative">
       <button
         onClick={handleDelete}
+        title="Delete Word"
         className="absolute rounded-full size-5 text-primary-700 top-5 left-5  hover:size-7 hover:top-4 hover:left-4"
       >
         <MdDeleteForever className="mx-auto text-xl hover:text-3xl" />
