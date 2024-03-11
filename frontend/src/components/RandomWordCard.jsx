@@ -23,7 +23,7 @@ const RandomWordCard = () => {
   return (
     <>
       {loading ? (
-        <div className="relative flex text-center flex-col  bg-light-50 shadow-lg bg-clip-border rounded-lg w-72 animate-pulse">
+        <div className="relative flex text-center flex-col  bg-light-50 shadow-lg bg-clip-border rounded-lg w-72 animate-pulse mx-auto">
           <div className="px-8 pt-8 pb-4">
             <div className="block w-40 mx-auto py-4 h-5 mb-2 font-sans text-5xl antialiased font-semibold leading-tight tracking-normal bg-dark-300/50 rounded-lg text-inherit">
               &nbsp;
@@ -42,7 +42,7 @@ const RandomWordCard = () => {
           </div>
         </div>
       ) : (
-        <div className="relative flex text-center flex-col  bg-light-50 shadow-lg bg-clip-border rounded-lg w-72">
+        <div className="relative flex text-center flex-col  bg-light-50 shadow-lg bg-clip-border rounded-lg w-72 mx-auto">
           <div className="px-6 pt-8 pb-4">
             <h5 className=" mb-2 text-xl antialiased font-bold leading-snug tracking-normal text-dark-900">
               Word to Practice

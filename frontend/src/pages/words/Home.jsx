@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import RandomWordCard from "../../components/RandomWordCard";
 
 const Home = () => {

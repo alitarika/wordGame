@@ -17,7 +17,7 @@ const Layout = () => {
     if (confirm("Do you really want to Log out?")) {
       logoutUser();
       setUser(null);
-      navigate("/");
+      navigate("/home");
       enqueueSnackbar("Come back soon! Your Words will miss you!", {
         variant: "welcome",
         className: "bg-primary-700 text-light",
@@ -29,7 +29,11 @@ const Layout = () => {
     <>
       <header className="bg-dark text-light-50 w-full">
         <nav className="flex items-center justify-between px-4 py-2">
-          <Link className="nav-link-logo" title="Homepage" to="/">
+          <Link
+            className="nav-link-logo"
+            title="Homepage"
+            to={user ? "/" : "/home"}
+          >
             <img src={logo} />
           </Link>
           {user ? (
@@ -50,7 +54,7 @@ const Layout = () => {
               <button
                 className="nav-link-text"
                 title="Log Out"
-                to="/"
+                to="/home"
                 onClick={handleLogout}
               >
                 LogOut
