@@ -6,7 +6,7 @@ import Register from "./pages/users/Register";
 import UsersWords from "./pages/words/UsersWords";
 import CreateWord from "./pages/words/CreateWord";
 import ModifyWord from "./pages/words/ModifyWord";
-import Training from "./pages/words/Training";
+import WordGame from "./pages/words/WordGame";
 import GuestHomePage from "./pages/words/GuestHomePage";
 
 export default function App() {
@@ -21,7 +21,7 @@ export default function App() {
           <Route path="userswords" element={<UsersWords />} />
           <Route path="create-word" element={<CreateWord />} />
           <Route path="modify-word" element={<ModifyWord />} />
-          <Route path="training" element={<Training />} />
+          <Route path="wordgame" element={<WordGame />} />
         </Route>
       </Routes>
     </BrowserRouter>

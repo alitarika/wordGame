@@ -41,8 +41,8 @@ const Layout = () => {
               >
                 <MdAddCircle />
               </Link>
-              <Link className="nav-link-text" title="training" to="/training">
-                trng
+              <Link className="nav-link-text" title="wordgame" to="/wordgame">
+                wordgame
               </Link>
               <Link className="nav-link-text" title="words" to="/userswords">
                 wrd
@@ -68,7 +68,7 @@ const Layout = () => {
           )}
         </nav>
       </header>
-      <div className="p-8 w-full">
+      <div className="sm:p-8 p-4 mx-auto w-full">
         <Outlet />
       </div>
     </>

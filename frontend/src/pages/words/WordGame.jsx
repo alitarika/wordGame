@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { enqueueSnackbar } from "notistack";
-import TrainingCard from "../../components/TrainingCard";
+import GameCard from "../../components/GameCard";
 import { WordListContext } from "../../contexts/WordListContext";
 import Flash from "../../components/Flash";
 import {
@@ -8,7 +8,7 @@ import {
   markWordAsNotMistaken,
 } from "../../controllers/wordListControllers";
 
-const Training = () => {
+const WordGame = () => {
   useEffect(() => {
     document.title = "Word Game";
   });
@@ -93,7 +93,27 @@ const Training = () => {
   return (
     <>
       {loading ? (
-        "loading..."
+        <div className="relative grid grid-cols-2 justify-items-center max-w-xl mx-auto animate-pulse">
+          <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 -z-10">
+            <div className="truncate w-40 h-24 bg-gradient-to-bl from-primary-600 to-primary-400   shadow-inner shadow-primary-300 text-light p-2 text-center rounded-lg">
+              <p className="pt-7">
+                <p className="px-4 font-bold truncate rounded-lg bg-light-50/40 h-3 w-24 mx-auto mt-2 mb-1 animate-pulse"></p>
+              </p>
+            </div>
+          </div>
+          <GameCard>
+            <p className="px-4 font-bold truncate rounded-lg bg-light-50/40 h-3 w-24 mx-auto mt-2 mb-1 animate-pulse"></p>
+          </GameCard>
+          <GameCard>
+            <p className="px-4 font-bold truncate rounded-lg bg-light-50/40 h-3 w-24 mx-auto mt-2 mb-1 animate-pulse"></p>
+          </GameCard>
+          <GameCard>
+            <p className="px-4 font-bold truncate rounded-lg bg-light-50/40 h-3 w-24 mx-auto mt-2 mb-1 animate-pulse"></p>
+          </GameCard>
+          <GameCard>
+            <p className="px-4 font-bold truncate rounded-lg bg-light-50/40 h-3 w-24 mx-auto mt-2 mb-1 animate-pulse"></p>
+          </GameCard>
+        </div>
       ) : (
         <>
           <p
@@ -110,18 +130,17 @@ const Training = () => {
           </p>
           {flashGreen && <Flash bg={"bg-green-600"} />}
           {flashRed && <Flash bg={"bg-red-600"} />}
-          <div className="my-auto sm:w-[480px] sm:h-[200px] gap-x-40 m-auto h-full relative gap-y-[90px] grid grid-cols-2">
-            {/* <div className="absolute left-[176px] top-12 m-4 -z-10">
-              <TrainingCard>{centerWord?.original}</TrainingCard>
-            </div> */}
+          <div className="relative grid grid-cols-2 justify-items-center max-w-xl mx-auto">
+            <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 -z-10">
+              <div className="truncate w-40 h-24 bg-gradient-to-bl from-primary-600 to-primary-400   shadow-inner shadow-primary-300 text-light p-2 text-center rounded-lg">
+                <p className="pt-7">{centerWord?.original}</p>
+              </div>
+            </div>
 
             {options.map((translation, index) => (
-              <TrainingCard
-                key={index}
-                onClick={() => handleOptionClick(index)}
-              >
+              <GameCard key={index} onClick={() => handleOptionClick(index)}>
                 {translation}
-              </TrainingCard>
+              </GameCard>
             ))}
           </div>
         </>
@@ -130,4 +149,4 @@ const Training = () => {
   );
 };
 
-export default Training;
+export default WordGame;
