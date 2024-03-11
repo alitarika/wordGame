@@ -110,21 +110,19 @@ const Training = () => {
           </p>
           {flashGreen && <Flash bg={"bg-green-600"} />}
           {flashRed && <Flash bg={"bg-red-600"} />}
-          <div className="my-auto sm:w-[500px] m-auto h-full relative">
-            <div className="absolute left-[176px] top-12 m-4 -z-10">
+          <div className="my-auto sm:w-[480px] sm:h-[200px] gap-x-40 m-auto h-full relative gap-y-[90px] grid grid-cols-2">
+            {/* <div className="absolute left-[176px] top-12 m-4 -z-10">
               <TrainingCard>{centerWord?.original}</TrainingCard>
-            </div>
+            </div> */}
 
-            <div className="grid grid-cols-2 gap-8 z-10 justify-items-center">
-              {options.map((translation, index) => (
-                <TrainingCard
-                  key={index}
-                  onClick={() => handleOptionClick(index)}
-                >
-                  {translation}
-                </TrainingCard>
-              ))}
-            </div>
+            {options.map((translation, index) => (
+              <TrainingCard
+                key={index}
+                onClick={() => handleOptionClick(index)}
+              >
+                {translation}
+              </TrainingCard>
+            ))}
           </div>
         </>
       )}

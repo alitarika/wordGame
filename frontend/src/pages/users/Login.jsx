@@ -63,7 +63,7 @@ const Login = () => {
               setFormData({ ...formData, username: e.target.value })
             }
           />
-          <label for="username" className="form-label">
+          <label htmlFor="username" className="form-label">
             Username
           </label>
         </div>
@@ -79,7 +79,7 @@ const Login = () => {
               setFormData({ ...formData, password: e.target.value })
             }
           />
-          <label for="password" className="form-label">
+          <label htmlFor="password" className="form-label">
             Password
           </label>
         </div>

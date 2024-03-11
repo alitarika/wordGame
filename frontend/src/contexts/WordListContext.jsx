@@ -32,7 +32,6 @@ const WordListProvider = ({ children }) => {
     } else {
       setWordList([]);
       setLoading(false);
-      console.log("User logged out. word list is cleared.");
     }
   }, [user]); // Put user in dependency array to fetch on login and clear on logout
 

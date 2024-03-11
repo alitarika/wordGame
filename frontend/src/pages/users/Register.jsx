@@ -70,7 +70,7 @@ const Register = () => {
               setFormData({ ...formData, username: e.target.value })
             }
           />
-          <label for="username" className="form-label">
+          <label htmlFor="username" className="form-label">
             Username
           </label>
         </div>
@@ -87,7 +87,7 @@ const Register = () => {
               setFormData({ ...formData, password: e.target.value })
             }
           />
-          <label for="password" className="form-label">
+          <label htmlFor="password" className="form-label">
             Password
           </label>
         </div>
@@ -104,7 +104,7 @@ const Register = () => {
               setFormData({ ...formData, passwordConfirm: e.target.value })
             }
           />
-          <label for="passwordConfirm" className="form-label">
+          <label htmlFor="passwordConfirm" className="form-label">
             Confirm Password
           </label>
         </div>

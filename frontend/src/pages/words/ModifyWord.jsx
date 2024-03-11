@@ -56,7 +56,7 @@ const ModifyWord = () => {
               setFormData({ ...formData, original: e.target.value })
             }
           />
-          <label for="original" className="form-label">
+          <label htmlFor="original" className="form-label">
             {location.state.original == formData.original ? (
               <>{location.state.original}</>
             ) : (
@@ -78,7 +78,7 @@ const ModifyWord = () => {
               setFormData({ ...formData, translation: e.target.value })
             }
           />
-          <label for="translation" className="form-label">
+          <label htmlFor="translation" className="form-label">
             {location.state.translation == formData.translation ? (
               <>{location.state.translation}</>
             ) : (

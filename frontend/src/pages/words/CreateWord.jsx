@@ -61,7 +61,7 @@ const CreateWord = ({ disabled = false }) => {
             }
             disabled={disabled}
           />
-          <label for="original" className="form-label">
+          <label htmlFor="original" className="form-label">
             Word
           </label>
         </div>
@@ -79,7 +79,7 @@ const CreateWord = ({ disabled = false }) => {
             }
             disabled={disabled}
           />
-          <label for="translation" className="form-label">
+          <label htmlFor="translation" className="form-label">
             Translation
           </label>
         </div>
