@@ -9,6 +9,8 @@ const Home = () => {
   return (
     <div className="flex-col">
       <RandomWordCard />
+      {/* Your mistaken words/total words
+      Your mistaken word list: ... */}
     </div>
   );
 };

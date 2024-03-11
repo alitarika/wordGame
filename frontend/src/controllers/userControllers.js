@@ -1,4 +1,4 @@
-export const BaseURL = "http://localhost:3001";
+export const BaseURL = "https://word-game-sepia.vercel.app";
 // Login user
 export const loginUser = async (username, password) => {
   if (!username || !password) {
