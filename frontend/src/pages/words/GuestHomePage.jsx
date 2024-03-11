@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div className="flex-col border-2 border-black">
       <h1 className="gradient-text text-[10vmin] text-balance text-center p-4 drop-shadow-lg custom-text-shadow border-2 border-black">
-        Practicing Your Words Has Never Been This Fun
+        Practicing Your Words Has Never Been This Fun - TRY
       </h1>
       <div className="border-2  border-black flex flex-col-reverse sm:flex-row">
         <div className="border-2 border-black">
