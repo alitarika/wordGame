@@ -90,7 +90,6 @@ const WordGame = () => {
         `${centerWord.original.toUpperCase()} means ${centerWord.translation.toUpperCase()}`,
         {
           variant: "error",
-          className: "bg-red-700",
         }
       );
       try {

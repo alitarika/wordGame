@@ -33,7 +33,10 @@ const ModifyWord = () => {
       const filteredList = wordList.filter((w) => w._id !== location.state._id);
       setWordList([data.updatedWord, ...filteredList]);
       navigate("/userswords");
-      enqueueSnackbar(data.success, { variant: "success" });
+      enqueueSnackbar(data.success, {
+        variant: "success",
+        className: "!bg-green-700",
+      });
     } catch (error) {
       enqueueSnackbar(error.message, { variant: "error" });
       console.error("Error arised when updating word", error.message);

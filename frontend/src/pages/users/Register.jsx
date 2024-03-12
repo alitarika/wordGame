@@ -43,7 +43,7 @@ const Register = () => {
       // Greet user with notification
       enqueueSnackbar(`Welcome ${formData.username}!`, {
         variant: "welcome",
-        className: "bg-primary-700 text-light",
+        className: "!bg-primary-700 !text-light",
       });
       // Navigate to homepage on successful register
       navigate("/");

@@ -32,7 +32,7 @@ const CreateWord = ({ disabled = false }) => {
       setWordList((previousWordList) => [newWordPair, ...previousWordList]);
       enqueueSnackbar(`${formData.original} has been added to your list.`, {
         variant: "success",
-        className: "bg-green-700",
+        className: "!bg-green-700",
       });
       navigate("/userswords");
     } catch (error) {

@@ -20,7 +20,7 @@ const Layout = () => {
       navigate("/home");
       enqueueSnackbar("Come back soon! Your Words will miss you!", {
         variant: "welcome",
-        className: "bg-primary-700 text-light",
+        className: "!bg-primary-700 !text-light",
       });
     }
   };
