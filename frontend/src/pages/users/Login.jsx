@@ -34,8 +34,8 @@ const Login = () => {
       setUser(formData.username);
       // Greet user with notification
       enqueueSnackbar(`Welcome back ${formData.username}!`, {
-        variant: "welcome",
         className: "bg-primary-700 text-light",
+        variant: "welcome",
       });
       // Navigate to homepage on successful login
       navigate("/");

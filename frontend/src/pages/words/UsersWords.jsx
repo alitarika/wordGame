@@ -18,6 +18,19 @@ const UsersWords = () => {
 
   const { wordList, loading } = useContext(WordListContext);
 
+  // Catch if wordList is empty and return jsx as warning
+  if (!loading && wordList == 0) {
+    return (
+      <h1 className="text-center my-3 text-dark-600 w-[90%] md:w-[70%] mx-auto py-6 px-4 md:px-6 rounded-lg bg-light-50">
+        You have no words yet! Go to{" "}
+        <Link className="text-primary" to="/create-word" title="Create Word">
+          Create Word
+        </Link>{" "}
+        Page to create a word/translation pair!
+      </h1>
+    );
+  }
+
   const alphabeticallySortedWordList = [...wordList].sort((a, b) => {
     return a.original.localeCompare(b.original);
   });
@@ -57,38 +70,24 @@ const UsersWords = () => {
         </>
       ) : (
         <div className="relative">
-          {renderedWordList.length > 0 ? (
-            <>
-              <button
-                onClick={handleClick}
-                className="absolute right-0 -top-8 text-primary-600 hover:text-primary-700"
-              >
-                {alphabeticallySorted ? (
-                  <MdAccessTimeFilled className="size-8 p-px mt-2 mr-2" />
-                ) : (
-                  <MdAbc className="size-12" />
-                )}
-              </button>
-              <h2 className="text-center my-3 text-primary">
-                <span className=" font-bold text-lg">
-                  {renderedWordList.length}
-                </span>{" "}
-                words
-              </h2>
-            </>
-          ) : (
-            <h2 className="text-center my-3 text-dark-600">
-              You have no words yet! Go to{" "}
-              <Link
-                className="text-primary"
-                to="/create-word"
-                title="Create Word"
-              >
-                Create Word
-              </Link>{" "}
-              Page to create a word/translation pair!
+          <>
+            <button
+              onClick={handleClick}
+              className="absolute right-0 -top-8 text-primary-600 hover:text-primary-700"
+            >
+              {alphabeticallySorted ? (
+                <MdAccessTimeFilled className="size-8 p-px mt-2 mr-2" />
+              ) : (
+                <MdAbc className="size-12" />
+              )}
+            </button>
+            <h2 className="text-center my-3 text-primary">
+              <span className=" font-bold text-lg">
+                {renderedWordList.length}
+              </span>{" "}
+              words
             </h2>
-          )}
+          </>
           {renderedWordList.map((word) => (
             <WordCard key={word._id} word={word} />
           ))}

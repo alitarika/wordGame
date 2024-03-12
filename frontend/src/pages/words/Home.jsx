@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import RandomWordCard from "../../components/RandomWordCard";
+import { UserContext } from "../../contexts/UserContext";
 
 const Home = () => {
   useEffect(() => {

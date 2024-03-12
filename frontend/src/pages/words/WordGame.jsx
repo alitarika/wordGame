@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { enqueueSnackbar } from "notistack";
 import GameCard from "../../components/GameCard";
 import { WordListContext } from "../../contexts/WordListContext";
@@ -14,6 +15,22 @@ const WordGame = () => {
   });
   const { wordList, setWordList, loading } = useContext(WordListContext);
 
+  if (!loading && wordList.length < 4) {
+    return (
+      <h1 className="text-center my-3 text-dark-600 w-[90%] md:w-[70%] mx-auto p-6 rounded-lg bg-light-50">
+        You have only{" "}
+        <span className="underline decoration-primary decoration-2">
+          {wordList.length} {wordList.length == 1 ? "word" : "words"}
+        </span>{" "}
+        yet! To play the game you need at least 4 words. Go to{" "}
+        <Link className="text-primary" to="/create-word" title="Create Word">
+          Create Word
+        </Link>{" "}
+        Page to create a word/translation pair!
+      </h1>
+    );
+  }
+
   const [centerWord, setCenterWord] = useState(null);
   const [options, setOptions] = useState([]);
   const [correctIndex, setCorrectIndex] = useState(null);
@@ -28,7 +45,7 @@ const WordGame = () => {
   }, [wordList, loading]);
 
   const nextRound = () => {
-    if (wordList.length === 0) return; // Guard clause in case wordList is empty
+    if (wordList.length < 3) return; // Guard clause in case wordList is not large enough to play
 
     // Select a random word for the center
     const newCenterWord = wordList[Math.floor(Math.random() * wordList.length)];
