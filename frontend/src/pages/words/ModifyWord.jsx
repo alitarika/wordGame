@@ -35,7 +35,7 @@ const ModifyWord = () => {
       navigate("/userswords");
       enqueueSnackbar(data.success, {
         variant: "success",
-        className: "!bg-green-700",
+        className: "!bg-green-700 !text-light",
       });
     } catch (error) {
       enqueueSnackbar(error.message, { variant: "error" });

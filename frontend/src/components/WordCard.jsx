@@ -20,7 +20,7 @@ const WordCard = ({ word }) => {
       setWordList(newWordList);
       enqueueSnackbar(`${word.original} has been deleted from your list.`, {
         variant: "delete",
-        className: "bg-primary-800",
+        className: "!bg-primary-800 !text-light",
       });
     } catch (error) {
       enqueueSnackbar(console.error, {
