@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { enqueueSnackbar } from "notistack";
 import GameCard from "../../components/GameCard";
+import GameCardSkeleton from "../../components/GameCardSkeleton";
 import { WordListContext } from "../../contexts/WordListContext";
 import Flash from "../../components/Flash";
 import {
@@ -106,6 +107,23 @@ const WordGame = () => {
     nextRound(); // Set up the next round
   };
 
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key >= "1" && event.key <= "4") {
+        const index = parseInt(event.key, 10) - 1;
+        if (index < options.length) {
+          handleOptionClick(index);
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [options, handleOptionClick]);
+
   return (
     <>
       {loading ? (
@@ -117,18 +135,10 @@ const WordGame = () => {
               </div>
             </div>
           </div>
-          <GameCard>
-            <p className="px-4 font-bold truncate rounded-lg bg-light-50/40 h-3 w-24 mx-auto mt-2 mb-1 animate-pulse"></p>
-          </GameCard>
-          <GameCard>
-            <p className="px-4 font-bold truncate rounded-lg bg-light-50/40 h-3 w-24 mx-auto mt-2 mb-1 animate-pulse"></p>
-          </GameCard>
-          <GameCard>
-            <p className="px-4 font-bold truncate rounded-lg bg-light-50/40 h-3 w-24 mx-auto mt-2 mb-1 animate-pulse"></p>
-          </GameCard>
-          <GameCard>
-            <p className="px-4 font-bold truncate rounded-lg bg-light-50/40 h-3 w-24 mx-auto mt-2 mb-1 animate-pulse"></p>
-          </GameCard>
+          <GameCardSkeleton />
+          <GameCardSkeleton />
+          <GameCardSkeleton />
+          <GameCardSkeleton />
         </div>
       ) : (
         <>
@@ -154,7 +164,11 @@ const WordGame = () => {
             </div>
 
             {options.map((translation, index) => (
-              <GameCard key={index} onClick={() => handleOptionClick(index)}>
+              <GameCard
+                key={index}
+                number={index + 1}
+                onClick={() => handleOptionClick(index)}
+              >
                 {translation}
               </GameCard>
             ))}
