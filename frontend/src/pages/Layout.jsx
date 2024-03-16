@@ -43,16 +43,24 @@ const Layout = () => {
             <div className="flex items-center">
               <Link
                 className="nav-link-icon"
-                title="Add new word"
+                title="Add new word (Press 'W' and 'C')"
                 to="/create-word"
               >
                 <MdAddCircle />
               </Link>
-              <Link className="nav-link-text" title="wordgame" to="/wordgame">
-                wordgame
+              <Link
+                className="nav-link-text"
+                title="Word Game (Press 'W' and 'G')"
+                to="/wordgame"
+              >
+                Word Game
               </Link>
-              <Link className="nav-link-text" title="words" to="/userswords">
-                wrd
+              <Link
+                className="nav-link-text"
+                title="Word List (Press 'W' and 'L')"
+                to="/userswords"
+              >
+                Word List
               </Link>
               <button
                 className="nav-link-text"
@@ -60,7 +68,7 @@ const Layout = () => {
                 to="/home"
                 onClick={handleLogout}
               >
-                LogOut
+                Log Out
               </button>
             </div>
           ) : (
