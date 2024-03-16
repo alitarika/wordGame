@@ -30,7 +30,7 @@ const Layout = () => {
 
   return (
     <>
-      <header className="bg-dark text-light-50 w-full">
+      <header className="bg-dark text-light w-full">
         <nav className="flex items-center justify-between px-4 py-2">
           <Link
             className="nav-link-logo"
@@ -53,14 +53,14 @@ const Layout = () => {
                 title="Word Game (Press 'W' and 'G')"
                 to="/wordgame"
               >
-                Word Game
+                Game
               </Link>
               <Link
                 className="nav-link-text"
                 title="Word List (Press 'W' and 'L')"
                 to="/userswords"
               >
-                Word List
+                List
               </Link>
               <button
                 className="nav-link-text"

@@ -1,6 +1,5 @@
 import { useEffect, useContext } from "react";
 import RandomWordCard from "../../components/RandomWordCard";
-import { UserContext } from "../../contexts/UserContext";
 import { WordListContext } from "../../contexts/WordListContext";
 import WordCard from "../../components/WordCard";
 import WordCardSkeleton from "../../components/WordCardSkeleton";
@@ -40,7 +39,7 @@ const Home = () => {
                 (Find those words in word game to correct)
               </h2>
               {mistakenWordList.map((w) => (
-                <WordCard word={w}></WordCard>
+                <WordCard word={w} key={w._id}></WordCard>
               ))}
             </div>
           ) : (
