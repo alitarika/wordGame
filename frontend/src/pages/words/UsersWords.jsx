@@ -44,25 +44,15 @@ const UsersWords = () => {
     : wordList;
 
   return (
-    <div className="max-w-[440px] bg-light-50 p-4 m-auto rounded-lg">
+    <div className="max-w-[440px] bg-light-50 p-4 m-auto rounded-lg shadow-custom">
       {loading ? (
         <>
           <div className="relative">
-            <>
-              <button
-                onClick={handleClick}
-                className="absolute right-0 -top-8 text-primary-600 hover:text-primary-700"
-              >
-                {alphabeticallySorted ? (
-                  <MdAccessTimeFilled className="size-8 p-px mt-2 mr-2" />
-                ) : (
-                  <MdAbc className="size-12" />
-                )}
-              </button>
-              <h2 className="text-center my-3 text-primary">
-                <span className=" font-bold text-lg">XXX</span> words
-              </h2>
-            </>
+            <button className="absolute right-0 -top-9 text-primary-600 hover:text-primary-700">
+              <MdAbc className="size-12 blur-[2px] opacity-80 animate-pulse" />
+            </button>
+            <h2 className="text-center mx-auto my-4 text-primary rounded-full w-28 h-5 bg-primary/60 animate-pulse"></h2>
+
             {[...Array(20)].map((_, index) => (
               <WordCardSkeleton key={index} />
             ))}

@@ -127,7 +127,7 @@ const WordGame = () => {
   return (
     <>
       {loading ? (
-        <div className="relative grid grid-cols-2 justify-items-center max-w-xl mx-auto animate-pulse">
+        <div className="relative grid grid-cols-2 gap-y-4 md:gap-y-2 justify-items-center max-w-xl mx-auto animate-pulse">
           <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 -z-10">
             <div className="truncate w-40 h-24 bg-gradient-to-bl from-primary-600 to-primary-400   shadow-inner shadow-primary-300 text-light p-2 text-center rounded-lg">
               <div className="pt-7">
@@ -156,7 +156,7 @@ const WordGame = () => {
           </p>
           {flashGreen && <Flash bg={"bg-green-600"} />}
           {flashRed && <Flash bg={"bg-red-600"} />}
-          <div className="relative grid grid-cols-2 justify-items-center max-w-xl mx-auto">
+          <div className="relative grid grid-cols-2 gap-y-4 md:gap-y-2 justify-items-center max-w-xl mx-auto">
             <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 -z-10">
               <div className="truncate w-40 h-24 bg-gradient-to-bl from-primary-600 to-primary-400   shadow-inner shadow-primary-300 text-light p-2 text-center rounded-lg">
                 <p className="pt-7">{centerWord?.original}</p>
