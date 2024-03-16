@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import { logoutUser } from "../controllers/userControllers.js";
@@ -13,6 +13,13 @@ const Layout = () => {
   // To access navigation functions init useNavigation hook
   const navigate = useNavigate();
 
+  const [pressedKeys, setPressedKeys] = useState({
+    c: false,
+    w: false,
+    l: false,
+    g: false,
+  });
+
   const handleLogout = () => {
     if (confirm("Do you really want to Log out?")) {
       logoutUser();
@@ -24,6 +31,50 @@ const Layout = () => {
       });
     }
   };
+
+  useEffect(() => {
+    if (!user) {
+      return;
+    } // for performance when not logged in
+
+    const downHandler = ({ key }) => {
+      // Adjusted to check for 'l' and 'g' keys as well
+      if (["c", "w", "l", "g"].includes(key)) {
+        setPressedKeys((prevKeys) => ({ ...prevKeys, [key]: true }));
+      }
+    };
+
+    const upHandler = ({ key }) => {
+      if (["c", "w", "l", "g"].includes(key)) {
+        setPressedKeys((prevKeys) => ({ ...prevKeys, [key]: false }));
+      }
+    };
+
+    window.addEventListener("keydown", downHandler);
+    window.addEventListener("keyup", upHandler);
+
+    return () => {
+      window.removeEventListener("keydown", downHandler);
+      window.removeEventListener("keyup", upHandler);
+    };
+  }, [user]);
+
+  // Navigate when both keys are pressed
+  useEffect(() => {
+    if (user) {
+      // Ensure user is logged in before allowing navigation
+      if (pressedKeys.c && pressedKeys.w) {
+        navigate("/create-word");
+        setPressedKeys({ c: false, w: false, l: false, g: false });
+      } else if (pressedKeys.w && pressedKeys.l) {
+        navigate("/userswords");
+        setPressedKeys({ c: false, w: false, l: false, g: false });
+      } else if (pressedKeys.w && pressedKeys.g) {
+        navigate("/wordgame");
+        setPressedKeys({ c: false, w: false, l: false, g: false });
+      }
+    }
+  }, [pressedKeys, navigate, user]);
 
   return (
     <>
