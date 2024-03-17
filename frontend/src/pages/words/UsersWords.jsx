@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useMemo } from "react";
 import { WordListContext } from "../../contexts/WordListContext.jsx";
 import WordCard from "../../components/WordCard.jsx";
 import WordCardSkeleton from "../../components/WordCardSkeleton.jsx";
 import { UserContext } from "../../contexts/UserContext.jsx";
 import { Link } from "react-router-dom";
-import { MdAbc } from "react-icons/md";
-import { MdAccessTimeFilled } from "react-icons/md";
+import { MdAbc, MdAccessTimeFilled } from "react-icons/md";
 
 const UsersWords = () => {
   const { user } = useContext(UserContext);
@@ -31,9 +30,9 @@ const UsersWords = () => {
     );
   }
 
-  const alphabeticallySortedWordList = [...wordList].sort((a, b) => {
-    return a.original.localeCompare(b.original);
-  });
+  const alphabeticallySortedWordList = useMemo(() => {
+    return [...wordList].sort((a, b) => a.original.localeCompare(b.original));
+  }, [wordList]);
 
   const handleClick = () => {
     setAlphabeticallySorted(!alphabeticallySorted);
