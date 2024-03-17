@@ -56,7 +56,7 @@ const RandomWordCard = () => {
           </div>
           <div className="pb-8 mx-auto">
             <button
-              className="align-middle select-none font-bold text-center  duration-200 transition-all text-xs py-3 px-6 rounded-lg bg-primary-600 text-white shadow-md shadow-primary-950/20 hover:shadow-lg hover:shadow-primary-600/20 focus:opacity-[0.9] active:opacity-[0.85] active:shadow-none"
+              className="align-middle select-none font-bold text-center duration-200 transition-all text-xs py-3 px-6 rounded-lg bg-primary-600 text-white shadow-md shadow-primary-950/20 random-word-card-button"
               type="button"
               onClick={updateRandomWordIndex}
             >

@@ -4,7 +4,7 @@ const GameCard = ({ children, number, onClick }) => {
       onClick={onClick}
       role="button"
       tabIndex={0}
-      className="relative truncate active:bg-dark-950 w-40 h-24 my-3 md:my-6 bg-gradient-to-bl from-dark-950 to-dark-600 hover:from-dark-900 hover:to-dark-500 shadow-inner shadow-dark-500 text-light p-2 active:from-primary-950 active:to-dark-600 text-center rounded-lg"
+      className="relative truncate p-2 text-center text-light rounded-lg w-40 h-24 my-3 md:my-6 bg-gradient-to-bl from-dark-950 to-dark-600 shadow-dark-500 game-card-hover-active"
     >
       <div
         title="Press this number on keybord to choose this option"

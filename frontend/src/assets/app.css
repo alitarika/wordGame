@@ -4,13 +4,13 @@
 
 @layer components {
   .nav-link-text {
-    @apply rounded-lg py-2 ml-0 sm:ml-2 px-4 text-base hover:bg-dark-800 hover:text-primary-500 active:text-primary-600 transition duration-200 ease-in hover:shadow-inner hover:shadow-dark-600 active:shadow-dark-700;
+    @apply rounded-lg py-2 ml-0 sm:ml-2 px-4 text-base transition duration-200 ease-in active:text-primary-600 active:shadow-inner active:shadow-dark-700 active:bg-dark-900;
   }
   .nav-link-icon {
-    @apply rounded-full text-2xl p-2 ml-0 sm:ml-2  hover:text-primary-500 active:text-primary-600 transition duration-200 ease-in;
+    @apply rounded-full text-2xl p-2 ml-0 sm:ml-2  active:text-primary-600 transition duration-200 ease-in;
   }
   .nav-link-logo {
-    @apply size-10 hover:bg-primary transition duration-200 rounded-full active:bg-primary-600 hover:shadow-inner hover:shadow-primary-300;
+    @apply size-10  transition duration-200 rounded-full active:bg-primary-600 active:shadow-inner active:shadow-primary-300;
   }
   .form-card {
     @apply bg-light-50 p-8 rounded-lg min-w-[260px] shadow-custom shadow-dark-950  max-w-[440px] mx-auto;
@@ -27,6 +27,12 @@
   .form-btn {
     @apply shadow-inner shadow-primary-300 active:shadow-primary-200 hover:opacity-90 block w-full bg-primary-500  text-light rounded-md py-1.5 active:bg-primary-600 disabled:cursor-not-allowed;
   }
+  .game-card-hover-active {
+    @apply active:from-primary-950 active:to-dark-600;
+  }
+  .random-word-card-button {
+    @apply active:opacity-[0.85] active:shadow-none;
+  }
 }
 
 @layer utilities {
@@ -38,5 +44,23 @@
       rgba(255, 68, 0, 0.171) -3px 3px 16px,
       rgba(255, 68, 0, 0.171) 3px -3px 66px,
       rgba(255, 68, 0, 0.171) 3px 3px 116px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-link-icon {
+    @apply hover:text-primary-500 active:text-primary-600;
+  }
+  .nav-link-text {
+    @apply hover:bg-dark-800 hover:text-primary-500 hover:shadow-inner hover:shadow-dark-600 active:text-primary-600 active:shadow-inner active:shadow-dark-700 active:bg-dark-900;
+  }
+  .nav-link-logo {
+    @apply active:bg-primary-600 active:shadow-inner active:shadow-primary-300 hover:bg-primary hover:shadow-inner hover:shadow-primary-300;
+  }
+  .game-card-hover-active {
+    @apply hover:from-dark-900 hover:to-dark-500 shadow-inner  p-2 active:from-primary-950 active:to-dark-600;
+  }
+  .random-word-card-button {
+    @apply hover:shadow-lg hover:shadow-primary-600/20 active:opacity-[0.85] active:shadow-none;
   }
 }
