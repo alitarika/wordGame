@@ -33,6 +33,18 @@
   .random-word-card-button {
     @apply active:opacity-[0.85] active:shadow-none;
   }
+  .home-col {
+    @apply flex px-0 md:px-2 py-4 gap-2 mb-2 relative;
+  }
+  .home-row-p {
+    @apply md:w-2/5 p-4 text-center;
+  }
+  .home-row-component {
+    @apply w-full p-0 md:p-2 mx-auto md:w-3/5;
+  }
+  .splash {
+    @apply absolute h-full bg-primary-300/30 -z-20 blur-3xl w-1/2 rounded-full;
+  }
 }
 
 @layer utilities {

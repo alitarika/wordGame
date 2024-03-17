@@ -31,7 +31,7 @@ const Layout = () => {
   return (
     <>
       <header className="bg-dark text-light w-full">
-        <nav className="flex items-center justify-between px-4 py-2">
+        <nav className="flex items-center justify-between px-4 py-2 max-w-screen-xl mx-auto">
           <Link
             className="nav-link-logo"
             title="Homepage"
@@ -83,7 +83,7 @@ const Layout = () => {
           )}
         </nav>
       </header>
-      <div className="sm:p-8 p-4 mx-auto w-full">
+      <div className="sm:p-8 p-4 mx-auto w-full max-w-screen-xl">
         <Outlet />
       </div>
     </>

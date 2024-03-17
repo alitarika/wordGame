@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { deleteWord } from "../controllers/wordListControllers";
 import { WordListContext } from "../contexts/WordListContext";
 
-const WordCard = ({ word }) => {
+const WordCard = ({ word, disabled = false }) => {
   const cardTextColorClassName = word.mistaken
     ? "text-primary-700 hover:shadow-primary-200 hover:bg-[linear-gradient(90deg,#f9cfaf,5%,#fef5ee,95%,#f9cfaf)]"
     : "hover:shadow-light hover:bg-[linear-gradient(90deg,#e7e7d8,5%,#f7f7f3,95%,#e7e7d8)]";
@@ -32,13 +32,18 @@ const WordCard = ({ word }) => {
   return (
     <div className="relative">
       <button
+        disabled={disabled}
         onClick={handleDelete}
         title="Delete Word"
         className="absolute rounded-full size-5 text-primary-700 top-5 left-5  hover:size-7 hover:top-4 hover:left-4"
       >
         <MdDeleteForever className="mx-auto text-xl hover:text-3xl" />
       </button>
-      <Link title="Modify Word" to="/modify-word" state={word}>
+      <Link
+        title="Modify Word"
+        to={disabled ? "" : "/modify-word"}
+        state={word}
+      >
         <MdChangeCircle className="absolute size-5 hover:size-7 hover:right-4 hover:top-4 text-dark bg-light rounded-full top-5 right-5" />
       </Link>
       <div className=" h-px w-full bg-gradient-to-r from-light-50 via-light-200/90 to-light-50"></div>
