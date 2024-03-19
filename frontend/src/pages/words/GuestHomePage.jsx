@@ -19,7 +19,20 @@ const Home = () => {
       <div className="home-col flex-col-reverse md:flex-row">
         <div className="splash"></div>
         <div className="home-row-p">
-          <p>Create Your Words First</p>
+          <p>
+            <span className="border-8 rounded-r-full mr-1 text-[12px] border-primary"></span>
+            You can create your word/translation pairs from Create Word Page.
+            You can also access it via pressing{" "}
+            <span className="key bg-dark-50 border border-dark-300 shadow-sm shadow-dark">
+              C
+            </span>{" "}
+            +{" "}
+            <span className="key bg-dark-50 border border-dark-300 shadow-sm shadow-dark">
+              W
+            </span>{" "}
+            at the same time once you Log In. Do not worry if you have made a
+            typo, you can modify the word easily later.
+          </p>
         </div>
         <div className="home-row-component">
           <CreateWord disabled />
@@ -38,13 +51,31 @@ const Home = () => {
           </div>
         </div>
         <div className="home-row-p">
-          <p>Your words will be saved in your personal word list.</p>
+          <p>
+            <span className="border-8 rounded-r-full mr-1 text-[12px] border-primary"></span>
+            The words you have created will be saved in your personal word list.
+            In this list you can see each of your words, how many words you have
+            as well as if you answered the word correctly or incorrectly the
+            last time you have played Word Game. You can navigate to your word
+            list by pressing{" "}
+            <span className="key bg-dark-50 border border-dark-300 shadow-sm shadow-dark">
+              W
+            </span>{" "}
+            +{" "}
+            <span className="key bg-dark-50 border border-dark-300 shadow-sm shadow-dark">
+              L
+            </span>{" "}
+            at the same time.
+          </p>
         </div>
       </div>
       <div className="home-col flex-col-reverse md:flex-row">
         <div className="splash"></div>
         <div className="home-row-p">
-          <p>Create Your Words First</p>
+          <p>
+            <span className="border-8 rounded-r-full mr-1 text-[12px] border-primary"></span>
+            Create Your Words First
+          </p>
         </div>
         <div className="home-row-component">
           <div className="relative grid grid-cols-2 gap-y-4 md:gap-y-2 justify-items-center max-w-xl mx-auto">
@@ -78,6 +109,7 @@ const Home = () => {
         </div>
         <div className="home-row-p">
           <p>
+            <span className="border-8 rounded-r-full mr-1 text-[12px] border-primary"></span>
             You can get a random word from your Word List that you have created
           </p>
         </div>
@@ -87,6 +119,7 @@ const Home = () => {
         <div className="splash"></div>
         <div className="home-row-p">
           <p>
+            <span className="border-8 rounded-r-full mr-1 text-[12px] border-primary"></span>
             You can get a random word from your Word List that you have created
           </p>
         </div>
@@ -116,10 +149,10 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="text-center text-lg">
+      <div className="text-center text-lg text-primary-950">
         <Link to="/register">
           Register to Word Game by{" "}
-          <span className="text-primary hover:opacity-90 active:text-primary-600">
+          <span className="text-primary hover:text-primary-600 active:text-primary-600">
             clicking here
           </span>
         </Link>
