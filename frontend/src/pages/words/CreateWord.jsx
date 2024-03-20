@@ -8,7 +8,8 @@ const CreateWord = ({ disabled = false }) => {
   useEffect(() => {
     if (disabled) return;
     document.title = "Create Word";
-  });
+  }, []);
+
   // form data state
   const [formData, setFormData] = useState({
     original: "",

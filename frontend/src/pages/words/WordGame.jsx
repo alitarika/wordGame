@@ -13,7 +13,8 @@ import {
 const WordGame = () => {
   useEffect(() => {
     document.title = "Word Game";
-  });
+  }, []);
+
   const { wordList, setWordList, loading } = useContext(WordListContext);
 
   const [centerWord, setCenterWord] = useState(null);

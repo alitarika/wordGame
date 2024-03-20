@@ -10,7 +10,7 @@ import logo from "../../assets/logo.svg";
 const Home = () => {
   useEffect(() => {
     document.title = "Word Game";
-  });
+  }, []);
 
   return (
     <div className="flex-col">

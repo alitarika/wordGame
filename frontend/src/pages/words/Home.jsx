@@ -7,7 +7,7 @@ import WordCardSkeleton from "../../components/WordCardSkeleton";
 const Home = () => {
   useEffect(() => {
     document.title = "Home";
-  });
+  }, []);
 
   const { wordList, loading } = useContext(WordListContext);
 

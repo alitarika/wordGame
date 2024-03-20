@@ -7,7 +7,7 @@ import { WordListContext } from "../../contexts/WordListContext";
 const ModifyWord = () => {
   useEffect(() => {
     document.title = `Modify '${location.state.original}'`;
-  });
+  }, []);
 
   const location = useLocation();
 

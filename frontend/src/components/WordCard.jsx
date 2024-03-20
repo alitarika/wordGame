@@ -1,5 +1,5 @@
 import { enqueueSnackbar } from "notistack";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { MdDeleteForever, MdChangeCircle } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { deleteWord } from "../controllers/wordListControllers";
