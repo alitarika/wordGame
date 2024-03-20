@@ -5,6 +5,7 @@ import CreateWord from "./CreateWord";
 import WordCardSkeleton from "../../components/WordCardSkeleton";
 import WordCard from "../../components/WordCard";
 import GameCard from "../../components/GameCard";
+import logo from "../../assets/logo.svg";
 
 const Home = () => {
   useEffect(() => {
@@ -13,16 +14,24 @@ const Home = () => {
 
   return (
     <div className="flex-col">
-      <h1 className="gradient-text text-[5vh] md:text-[7vh] lg:text-[11vh] xl:text-[14vh] text-balance text-center p-2 drop-shadow-lg custom-text-shadow mb-4">
+      <h1 className="gradient-text text-[10vw] md:text-[8vw] lg:text-[8vw] xl:text-[7vw] text-balance text-center p-2 drop-shadow-lg custom-text-shadow mb-4">
+        <img
+          className=" inline-block size-[10vw] md:size-[8vw] lg:size-[8vw] xl:size-[7vw] -mt-[1vh] md:-mt-[2vh] mr-[1vh] md:mr-[2vh] shadow-custom shadow-primary rounded-full bg-primary opacity-90"
+          src={logo}
+        />
         Practice Your OWN Words with Word Game
       </h1>
       <div className="home-col flex-col-reverse md:flex-row">
         <div className="splash"></div>
         <div className="home-row-p">
           <p>
-            <span className="border-8 rounded-r-full mr-1 text-[12px] border-primary"></span>
+            <img
+              src={logo}
+              alt="Logo"
+              className="float-left bg-primary size-[48px] rounded-r-full mr-2"
+            />
             You can create your word/translation pairs from Create Word Page.
-            You can also access it via pressing{" "}
+            You can also access the page by pressing{" "}
             <span className="key bg-dark-50 border border-dark-300 shadow-sm shadow-dark">
               C
             </span>{" "}
@@ -30,8 +39,8 @@ const Home = () => {
             <span className="key bg-dark-50 border border-dark-300 shadow-sm shadow-dark">
               W
             </span>{" "}
-            at the same time once you Log In. Do not worry if you have made a
-            typo, you can modify the word easily later.
+            at the same time once you are logged in. Do not worry if you have
+            made a typo, you can modify the word easily later.
           </p>
         </div>
         <div className="home-row-component">
@@ -48,11 +57,16 @@ const Home = () => {
             <WordCardSkeleton />
             <WordCardSkeleton />
             <WordCardSkeleton />
+            <div className=" h-px w-full bg-gradient-to-r from-light-50 via-light-200/90 to-light-50"></div>
           </div>
         </div>
         <div className="home-row-p">
           <p>
-            <span className="border-8 rounded-r-full mr-1 text-[12px] border-primary"></span>
+            <img
+              src={logo}
+              alt="Logo"
+              className="float-left bg-primary size-[48px] rounded-r-full mr-2"
+            />{" "}
             The words you have created will be saved in your personal word list.
             In this list you can see each of your words, how many words you have
             as well as if you answered the word correctly or incorrectly the
@@ -73,8 +87,24 @@ const Home = () => {
         <div className="splash"></div>
         <div className="home-row-p">
           <p>
-            <span className="border-8 rounded-r-full mr-1 text-[12px] border-primary"></span>
-            Create Your Words First
+            <img
+              src={logo}
+              alt="Logo"
+              className="float-left bg-primary size-[48px] rounded-r-full mr-2"
+            />{" "}
+            In Word Game, word will appear on orange box in the middle and you
+            will answer which one is the correct translation of the word. You
+            may use numbers to answer. On correct answer background will flash
+            green and on wrong answer red. Then, new set of words will appear on
+            your page. Navigate to Word Game by pressing{" "}
+            <span className="key bg-dark-50 border border-dark-300 shadow-sm shadow-dark">
+              W
+            </span>{" "}
+            +{" "}
+            <span className="key bg-dark-50 border border-dark-300 shadow-sm shadow-dark">
+              G
+            </span>{" "}
+            at the same time.
           </p>
         </div>
         <div className="home-row-component">
@@ -109,8 +139,14 @@ const Home = () => {
         </div>
         <div className="home-row-p">
           <p>
-            <span className="border-8 rounded-r-full mr-1 text-[12px] border-primary"></span>
-            You can get a random word from your Word List that you have created
+            <img
+              src={logo}
+              alt="Logo"
+              className="float-left bg-primary size-[48px] rounded-r-full mr-2"
+            />{" "}
+            Everytime you visit your homepage, you will see a random word from
+            your word list with the word and its translation. You can press
+            'Change Word' to get a new word/translation pair.
           </p>
         </div>
       </div>
@@ -119,8 +155,13 @@ const Home = () => {
         <div className="splash"></div>
         <div className="home-row-p">
           <p>
-            <span className="border-8 rounded-r-full mr-1 text-[12px] border-primary"></span>
-            You can get a random word from your Word List that you have created
+            <img
+              src={logo}
+              alt="Logo"
+              className="float-left bg-primary size-[48px] rounded-r-full mr-2"
+            />{" "}
+            You will also see all the words you answered wrong in your homepage
+            to make you aware of the words you have failed to recall correctly.
           </p>
         </div>
 

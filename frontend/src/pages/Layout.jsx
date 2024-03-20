@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import { logoutUser } from "../controllers/userControllers.js";
@@ -43,7 +43,7 @@ const Layout = () => {
             <div className="flex items-center">
               <Link
                 className="nav-link-icon"
-                title="Add new word (Press 'W' and 'C')"
+                title="Create new word (Press 'W' and 'C')"
                 to="/create-word"
               >
                 <MdAddCircle />

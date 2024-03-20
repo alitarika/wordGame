@@ -10,6 +10,7 @@ import WordGame from "./pages/words/WordGame";
 import GuestHomePage from "./pages/words/GuestHomePage";
 import GuestRoutes from "./routes/GuestRoutes";
 import AuthRoutes from "./routes/AuthRoutes";
+import NotFound404 from "./pages/NotFound404";
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
             <Route path="modify-word" element={<ModifyWord />} />
             <Route path="wordgame" element={<WordGame />} />
           </Route>
+          <Route path="*" element={<NotFound404 />} />
         </Route>
       </Routes>
     </BrowserRouter>

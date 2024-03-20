@@ -37,7 +37,7 @@
     @apply flex px-0 md:px-2 py-4 gap-2 mb-4 relative;
   }
   .home-row-p {
-    @apply md:w-2/5 text-pretty text-left p-4 mt-2;
+    @apply md:w-2/5 text-pretty text-left p-4 mt-2 leading-6;
   }
   .home-row-component {
     @apply w-full p-0 md:p-2 mx-auto md:w-3/5;

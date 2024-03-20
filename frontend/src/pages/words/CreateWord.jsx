@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { WordListContext } from "../../contexts/WordListContext";
 import { createWord } from "../../controllers/wordListControllers.js";
 import { enqueueSnackbar } from "notistack";
@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const CreateWord = ({ disabled = false }) => {
   useEffect(() => {
     if (disabled) return;
-    document.title = "Add Word";
+    document.title = "Create Word";
   });
   // form data state
   const [formData, setFormData] = useState({
